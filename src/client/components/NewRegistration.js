@@ -1,6 +1,6 @@
 import React from "react";
 
-let Login = React.createClass({
+const NewRegistration = React.createClass({
 
   getInitialState() {
     return ({email: "", password: ""});
@@ -14,7 +14,7 @@ let Login = React.createClass({
     this.setState({password: e.target.value});
   },
 
-  loginPressed() {
+  registerPressed() {
     const user = {
       email: this.state.email,
       password: this.state.password
@@ -22,7 +22,7 @@ let Login = React.createClass({
 
     this.clearForm();
 
-    console.log("Logging in:", user);
+    console.log("Registering:", user);
   },
 
   clearForm() {
@@ -30,9 +30,11 @@ let Login = React.createClass({
   },
 
   render: function() {
+
     return (
       <div>
-        <h1>Login</h1>
+        <h1>Register</h1>
+        <h3>Beacon: {this.props.beacon}</h3>
         <div className="form-group">
           <label htmlFor="email">Email:</label>
           <input type="text" className="form-control" onChange={this.emailInputChanged} id="email" value={this.state.email}/>
@@ -41,10 +43,10 @@ let Login = React.createClass({
           <label htmlFor="password">Password:</label>
           <input type="password" className="form-control" onChange={this.passwordInputChanged} id="password" value={this.state.password}/>
         </div>
-        <button type="button" className="btn btn-primary" onClick={this.loginPressed}>Login</button>
+        <button type="button" className="btn btn-primary" onClick={this.registerPressed}>Register</button>
       </div>
     );
   }
 });
 
-module.exports = Login;
+module.exports = NewRegistration;

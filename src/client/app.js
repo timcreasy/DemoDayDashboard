@@ -9,7 +9,7 @@ ReactDOM.render((
   <Router history={hashHistory}>
     <Route path="/" component={Application} >
       <Route path="/login" component={Login}/>
-      <Route path="/register" component={Register}/>
+      <Route path="/register/:beaconId" component={Register}/>
     </Route>
   </Router>
 ), document.getElementById('app'));

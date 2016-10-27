@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router";
+import AppBar from 'material-ui/AppBar';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Login from "./Login";
 
@@ -8,6 +9,10 @@ let Application = React.createClass({
     return (
       <MuiThemeProvider>
         <div>
+          <AppBar
+            title="Demo Day Dashboard"
+            showMenuIconButton={false}
+          />
           <ul>
             <li><Link to="/login">Login</Link></li>
           </ul>

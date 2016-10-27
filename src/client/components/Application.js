@@ -1,24 +1,16 @@
 import React from "react";
 import { Link } from "react-router";
-import AppBar from 'material-ui/AppBar';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Login from "./Login";
+import Navbar from "./Navbar";
 
-let Application = React.createClass({
+const Application = React.createClass({
   render: function() {
     return (
-      <MuiThemeProvider>
-        <div>
-          <AppBar
-            title="Demo Day Dashboard"
-            showMenuIconButton={false}
-          />
-          <ul>
-            <li><Link to="/login">Login</Link></li>
-          </ul>
+      <div>
+        <Navbar />
+        <div className="container">
           {this.props.children}
         </div>
-      </MuiThemeProvider>
+      </div>
     );
   }
 });

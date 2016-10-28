@@ -44,7 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("\"use strict\";\n\nvar _react = __webpack_require__(1);\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactDom = __webpack_require__(34);\n\nvar _reactDom2 = _interopRequireDefault(_reactDom);\n\nvar _reactRouter = __webpack_require__(172);\n\nvar _Application = __webpack_require__(227);\n\nvar _Application2 = _interopRequireDefault(_Application);\n\nvar _Login = __webpack_require__(421);\n\nvar _Login2 = _interopRequireDefault(_Login);\n\nvar _Register = __webpack_require__(434);\n\nvar _Register2 = _interopRequireDefault(_Register);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n_reactDom2.default.render(_react2.default.createElement(\n  _reactRouter.Router,\n  { history: _reactRouter.hashHistory },\n  _react2.default.createElement(\n    _reactRouter.Route,\n    { path: \"/\", component: _Application2.default },\n    _react2.default.createElement(_reactRouter.Route, { path: \"/login\", component: _Login2.default }),\n    _react2.default.createElement(_reactRouter.Route, { path: \"/register/:beaconId\", component: _Register2.default })\n  )\n), document.getElementById('app'));\n\n/*****************\n ** WEBPACK FOOTER\n ** ./client/app.js\n ** module id = 0\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./client/app.js?");
+	eval("\"use strict\";\n\nvar _react = __webpack_require__(1);\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactDom = __webpack_require__(34);\n\nvar _reactDom2 = _interopRequireDefault(_reactDom);\n\nvar _reactRouter = __webpack_require__(172);\n\nvar _Application = __webpack_require__(227);\n\nvar _Application2 = _interopRequireDefault(_Application);\n\nvar _Login = __webpack_require__(228);\n\nvar _Login2 = _interopRequireDefault(_Login);\n\nvar _Register = __webpack_require__(229);\n\nvar _Register2 = _interopRequireDefault(_Register);\n\nvar _Home = __webpack_require__(233);\n\nvar _Home2 = _interopRequireDefault(_Home);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n_reactDom2.default.render(_react2.default.createElement(\n  _reactRouter.Router,\n  { history: _reactRouter.browserHistory },\n  _react2.default.createElement(\n    _reactRouter.Route,\n    { path: \"/\", component: _Application2.default },\n    _react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default }),\n    _react2.default.createElement(_reactRouter.Route, { path: \"/login\", component: _Login2.default }),\n    _react2.default.createElement(_reactRouter.Route, { path: \"/register/:beaconId\", component: _Register2.default })\n  )\n), document.getElementById('app'));\n\n/*****************\n ** WEBPACK FOOTER\n ** ./client/app.js\n ** module id = 0\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./client/app.js?");
 
 /***/ },
 /* 1 */
@@ -1406,247 +1406,49 @@
 /* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("\"use strict\";\n\nvar _react = __webpack_require__(1);\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactRouter = __webpack_require__(172);\n\nvar _Navbar = __webpack_require__(433);\n\nvar _Navbar2 = _interopRequireDefault(_Navbar);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Application = _react2.default.createClass({\n  displayName: \"Application\",\n\n  render: function render() {\n    return _react2.default.createElement(\n      \"div\",\n      null,\n      _react2.default.createElement(_Navbar2.default, null),\n      _react2.default.createElement(\n        \"div\",\n        { className: \"container\" },\n        this.props.children\n      )\n    );\n  }\n});\n\nmodule.exports = Application;\n\n/*****************\n ** WEBPACK FOOTER\n ** ./client/components/Application.js\n ** module id = 227\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./client/components/Application.js?");
+	eval("\"use strict\";\n\nvar _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };\n\nvar _react = __webpack_require__(1);\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactRouter = __webpack_require__(172);\n\nvar _Navbar = __webpack_require__(234);\n\nvar _Navbar2 = _interopRequireDefault(_Navbar);\n\nvar _Home = __webpack_require__(233);\n\nvar _Home2 = _interopRequireDefault(_Home);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Application = _react2.default.createClass({\n  displayName: \"Application\",\n\n  render: function render() {\n    var _this = this;\n\n    var childrenWithProps = _react2.default.Children.map(this.props.children, function (child) {\n      return _react2.default.cloneElement(child, _extends({}, _this.props));\n    });\n    return _react2.default.createElement(\n      \"div\",\n      null,\n      _react2.default.createElement(_Navbar2.default, null),\n      _react2.default.createElement(\n        \"div\",\n        { className: \"container\" },\n        childrenWithProps\n      )\n    );\n  }\n});\n\nmodule.exports = Application;\n\n/*****************\n ** WEBPACK FOOTER\n ** ./client/components/Application.js\n ** module id = 227\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./client/components/Application.js?");
 
 /***/ },
-/* 228 */,
-/* 229 */,
-/* 230 */,
-/* 231 */,
-/* 232 */,
-/* 233 */,
-/* 234 */,
-/* 235 */,
-/* 236 */,
-/* 237 */,
-/* 238 */,
-/* 239 */,
-/* 240 */,
-/* 241 */,
-/* 242 */,
-/* 243 */,
-/* 244 */,
-/* 245 */,
-/* 246 */,
-/* 247 */,
-/* 248 */,
-/* 249 */,
-/* 250 */,
-/* 251 */,
-/* 252 */,
-/* 253 */,
-/* 254 */,
-/* 255 */,
-/* 256 */,
-/* 257 */,
-/* 258 */,
-/* 259 */,
-/* 260 */,
-/* 261 */,
-/* 262 */,
-/* 263 */,
-/* 264 */,
-/* 265 */,
-/* 266 */,
-/* 267 */,
-/* 268 */,
-/* 269 */,
-/* 270 */,
-/* 271 */,
-/* 272 */,
-/* 273 */,
-/* 274 */,
-/* 275 */,
-/* 276 */,
-/* 277 */,
-/* 278 */,
-/* 279 */,
-/* 280 */,
-/* 281 */,
-/* 282 */,
-/* 283 */,
-/* 284 */,
-/* 285 */,
-/* 286 */,
-/* 287 */,
-/* 288 */,
-/* 289 */,
-/* 290 */,
-/* 291 */,
-/* 292 */,
-/* 293 */,
-/* 294 */,
-/* 295 */,
-/* 296 */,
-/* 297 */,
-/* 298 */,
-/* 299 */,
-/* 300 */,
-/* 301 */,
-/* 302 */,
-/* 303 */,
-/* 304 */,
-/* 305 */,
-/* 306 */,
-/* 307 */,
-/* 308 */,
-/* 309 */,
-/* 310 */,
-/* 311 */,
-/* 312 */,
-/* 313 */,
-/* 314 */,
-/* 315 */,
-/* 316 */,
-/* 317 */,
-/* 318 */,
-/* 319 */,
-/* 320 */,
-/* 321 */,
-/* 322 */,
-/* 323 */,
-/* 324 */,
-/* 325 */,
-/* 326 */,
-/* 327 */,
-/* 328 */,
-/* 329 */,
-/* 330 */,
-/* 331 */,
-/* 332 */,
-/* 333 */,
-/* 334 */,
-/* 335 */,
-/* 336 */,
-/* 337 */,
-/* 338 */,
-/* 339 */,
-/* 340 */,
-/* 341 */,
-/* 342 */,
-/* 343 */,
-/* 344 */,
-/* 345 */,
-/* 346 */,
-/* 347 */,
-/* 348 */,
-/* 349 */,
-/* 350 */,
-/* 351 */,
-/* 352 */,
-/* 353 */,
-/* 354 */,
-/* 355 */,
-/* 356 */,
-/* 357 */,
-/* 358 */,
-/* 359 */,
-/* 360 */,
-/* 361 */,
-/* 362 */,
-/* 363 */,
-/* 364 */,
-/* 365 */,
-/* 366 */,
-/* 367 */,
-/* 368 */,
-/* 369 */,
-/* 370 */,
-/* 371 */,
-/* 372 */,
-/* 373 */,
-/* 374 */,
-/* 375 */,
-/* 376 */,
-/* 377 */,
-/* 378 */,
-/* 379 */,
-/* 380 */,
-/* 381 */,
-/* 382 */,
-/* 383 */,
-/* 384 */,
-/* 385 */,
-/* 386 */,
-/* 387 */,
-/* 388 */,
-/* 389 */,
-/* 390 */,
-/* 391 */,
-/* 392 */,
-/* 393 */,
-/* 394 */,
-/* 395 */,
-/* 396 */,
-/* 397 */,
-/* 398 */,
-/* 399 */,
-/* 400 */,
-/* 401 */,
-/* 402 */,
-/* 403 */,
-/* 404 */,
-/* 405 */,
-/* 406 */,
-/* 407 */,
-/* 408 */,
-/* 409 */,
-/* 410 */,
-/* 411 */,
-/* 412 */,
-/* 413 */,
-/* 414 */,
-/* 415 */,
-/* 416 */,
-/* 417 */,
-/* 418 */,
-/* 419 */,
-/* 420 */,
-/* 421 */
+/* 228 */
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("\"use strict\";\n\nvar _react = __webpack_require__(1);\n\nvar _react2 = _interopRequireDefault(_react);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Login = _react2.default.createClass({\n  displayName: \"Login\",\n  getInitialState: function getInitialState() {\n    return { email: \"\", password: \"\" };\n  },\n  emailInputChanged: function emailInputChanged(e) {\n    this.setState({ email: e.target.value });\n  },\n  passwordInputChanged: function passwordInputChanged(e) {\n    this.setState({ password: e.target.value });\n  },\n  loginPressed: function loginPressed() {\n    var user = {\n      email: this.state.email,\n      password: this.state.password\n    };\n\n    this.clearForm();\n\n    console.log(\"Logging in:\", user);\n  },\n  clearForm: function clearForm() {\n    this.setState({ email: \"\", password: \"\" });\n  },\n\n\n  render: function render() {\n    return _react2.default.createElement(\n      \"div\",\n      null,\n      _react2.default.createElement(\n        \"h1\",\n        null,\n        \"Login\"\n      ),\n      _react2.default.createElement(\n        \"div\",\n        { className: \"form-group\" },\n        _react2.default.createElement(\n          \"label\",\n          { htmlFor: \"email\" },\n          \"Email:\"\n        ),\n        _react2.default.createElement(\"input\", { type: \"text\", className: \"form-control\", onChange: this.emailInputChanged, id: \"email\", value: this.state.email })\n      ),\n      _react2.default.createElement(\n        \"div\",\n        { className: \"form-group\" },\n        _react2.default.createElement(\n          \"label\",\n          { htmlFor: \"password\" },\n          \"Password:\"\n        ),\n        _react2.default.createElement(\"input\", { type: \"password\", className: \"form-control\", onChange: this.passwordInputChanged, id: \"password\", value: this.state.password })\n      ),\n      _react2.default.createElement(\n        \"button\",\n        { type: \"button\", className: \"btn btn-primary\", onClick: this.loginPressed },\n        \"Login\"\n      )\n    );\n  }\n});\n\nmodule.exports = Login;\n\n/*****************\n ** WEBPACK FOOTER\n ** ./client/components/Login.js\n ** module id = 421\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./client/components/Login.js?");
+	eval("\"use strict\";\n\nvar _react = __webpack_require__(1);\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactRouter = __webpack_require__(172);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Login = _react2.default.createClass({\n  displayName: \"Login\",\n  getInitialState: function getInitialState() {\n    return { email: \"\", password: \"\", error: \"\" };\n  },\n  emailInputChanged: function emailInputChanged(e) {\n    this.setState({ email: e.target.value });\n  },\n  passwordInputChanged: function passwordInputChanged(e) {\n    this.setState({ password: e.target.value });\n  },\n  loginPressed: function loginPressed() {\n    var _this = this;\n\n    var user = {\n      email: this.state.email,\n      password: this.state.password\n    };\n\n    axios.post('http://104.236.71.66:3000/api/student/login', user).then(function (_ref) {\n      var data = _ref.data;\n\n      if (data.student) {\n        _this.setState({ error: \"\" });\n        _reactRouter.browserHistory.push('/');\n      }\n\n      if (data.msg) {\n        _this.setState({ error: data.msg });\n      }\n    }).catch(console.log);\n  },\n  clearForm: function clearForm() {\n    this.setState({ email: \"\", password: \"\" });\n  },\n\n\n  render: function render() {\n    return _react2.default.createElement(\n      \"div\",\n      null,\n      _react2.default.createElement(\n        \"h1\",\n        null,\n        \"Login\"\n      ),\n      _react2.default.createElement(\n        \"h1\",\n        null,\n        this.state.error\n      ),\n      _react2.default.createElement(\n        \"div\",\n        { className: \"form-group\" },\n        _react2.default.createElement(\n          \"label\",\n          { htmlFor: \"email\" },\n          \"Email:\"\n        ),\n        _react2.default.createElement(\"input\", { type: \"text\", className: \"form-control\", onChange: this.emailInputChanged, id: \"email\", value: this.state.email })\n      ),\n      _react2.default.createElement(\n        \"div\",\n        { className: \"form-group\" },\n        _react2.default.createElement(\n          \"label\",\n          { htmlFor: \"password\" },\n          \"Password:\"\n        ),\n        _react2.default.createElement(\"input\", { type: \"password\", className: \"form-control\", onChange: this.passwordInputChanged, id: \"password\", value: this.state.password })\n      ),\n      _react2.default.createElement(\n        \"button\",\n        { type: \"button\", className: \"btn btn-primary\", onClick: this.loginPressed },\n        \"Login\"\n      )\n    );\n  }\n});\n\nmodule.exports = Login;\n\n/*****************\n ** WEBPACK FOOTER\n ** ./client/components/Login.js\n ** module id = 228\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./client/components/Login.js?");
 
 /***/ },
-/* 422 */,
-/* 423 */,
-/* 424 */,
-/* 425 */,
-/* 426 */,
-/* 427 */,
-/* 428 */,
-/* 429 */,
-/* 430 */,
-/* 431 */,
-/* 432 */,
-/* 433 */
+/* 229 */
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("\"use strict\";\n\nvar _react = __webpack_require__(1);\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactRouter = __webpack_require__(172);\n\nvar _Login = __webpack_require__(421);\n\nvar _Login2 = _interopRequireDefault(_Login);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Navbar = _react2.default.createClass({\n  displayName: \"Navbar\",\n\n  render: function render() {\n    return _react2.default.createElement(\n      \"nav\",\n      { className: \"navbar navbar-default\" },\n      _react2.default.createElement(\n        \"div\",\n        { className: \"container-fluid\" },\n        _react2.default.createElement(\n          \"div\",\n          { className: \"navbar-header\" },\n          _react2.default.createElement(\n            \"a\",\n            { className: \"navbar-brand\", href: \"#\" },\n            \"Demo Day Dashboard\"\n          )\n        ),\n        _react2.default.createElement(\n          \"ul\",\n          { className: \"nav navbar-nav\" },\n          _react2.default.createElement(\n            \"li\",\n            null,\n            _react2.default.createElement(\n              _reactRouter.Link,\n              { to: \"/login\" },\n              \"Login\"\n            )\n          )\n        )\n      )\n    );\n  }\n});\n\nmodule.exports = Navbar;\n\n/*****************\n ** WEBPACK FOOTER\n ** ./client/components/Navbar.js\n ** module id = 433\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./client/components/Navbar.js?");
+	eval("\"use strict\";\n\nvar _react = __webpack_require__(1);\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _NewRegistration = __webpack_require__(230);\n\nvar _NewRegistration2 = _interopRequireDefault(_NewRegistration);\n\nvar _InvalidRegistration = __webpack_require__(231);\n\nvar _InvalidRegistration2 = _interopRequireDefault(_InvalidRegistration);\n\nvar _Spinner = __webpack_require__(232);\n\nvar _Spinner2 = _interopRequireDefault(_Spinner);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Register = _react2.default.createClass({\n  displayName: \"Register\",\n  getInitialState: function getInitialState() {\n    return {\n      isRegistered: false,\n      correctComponent: _react2.default.createElement(_Spinner2.default, null)\n    };\n  },\n  componentWillMount: function componentWillMount() {\n    var _this = this;\n\n    axios.get('http://localhost:3000/api/' + this.props.params.beaconId).then(function (_ref) {\n      var msg = _ref.data.msg;\n\n      if (msg === \"Invalid\") {\n        _this.setState({ correctComponent: _react2.default.createElement(_InvalidRegistration2.default, null) });\n      } else {\n        _this.setState({ correctComponent: _react2.default.createElement(_NewRegistration2.default, { beacon: _this.props.params.beaconId }) });\n      }\n    }).catch(console.log);\n  },\n\n\n  render: function render() {\n    return _react2.default.createElement(\n      \"div\",\n      null,\n      this.state.correctComponent\n    );\n  }\n});\n\nmodule.exports = Register;\n\n/*****************\n ** WEBPACK FOOTER\n ** ./client/components/Register.js\n ** module id = 229\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./client/components/Register.js?");
 
 /***/ },
-/* 434 */
+/* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("\"use strict\";\n\nvar _react = __webpack_require__(1);\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _NewRegistration = __webpack_require__(435);\n\nvar _NewRegistration2 = _interopRequireDefault(_NewRegistration);\n\nvar _InvalidRegistration = __webpack_require__(436);\n\nvar _InvalidRegistration2 = _interopRequireDefault(_InvalidRegistration);\n\nvar _Spinner = __webpack_require__(437);\n\nvar _Spinner2 = _interopRequireDefault(_Spinner);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Register = _react2.default.createClass({\n  displayName: \"Register\",\n  getInitialState: function getInitialState() {\n    return {\n      isRegistered: false,\n      correctComponent: _react2.default.createElement(_Spinner2.default, null)\n    };\n  },\n  componentWillMount: function componentWillMount() {\n    var _this = this;\n\n    axios.get('http://localhost:3000/api/' + this.props.params.beaconId).then(function (_ref) {\n      var msg = _ref.data.msg;\n\n      if (msg === \"Invalid\") {\n        _this.setState({ correctComponent: _react2.default.createElement(_InvalidRegistration2.default, null) });\n      } else {\n        _this.setState({ correctComponent: _react2.default.createElement(_NewRegistration2.default, { beacon: _this.props.params.beaconId }) });\n      }\n    }).catch(console.log);\n  },\n\n\n  render: function render() {\n    return _react2.default.createElement(\n      \"div\",\n      null,\n      this.state.correctComponent\n    );\n  }\n});\n\nmodule.exports = Register;\n\n/*****************\n ** WEBPACK FOOTER\n ** ./client/components/Register.js\n ** module id = 434\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./client/components/Register.js?");
+	eval("\"use strict\";\n\nvar _react = __webpack_require__(1);\n\nvar _react2 = _interopRequireDefault(_react);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar NewRegistration = _react2.default.createClass({\n  displayName: \"NewRegistration\",\n  getInitialState: function getInitialState() {\n    return { email: \"\", password: \"\" };\n  },\n  emailInputChanged: function emailInputChanged(e) {\n    this.setState({ email: e.target.value });\n  },\n  passwordInputChanged: function passwordInputChanged(e) {\n    this.setState({ password: e.target.value });\n  },\n  registerPressed: function registerPressed() {\n    var _this = this;\n\n    var user = {\n      beaconId: this.props.beacon,\n      email: this.state.email,\n      password: this.state.password\n    };\n\n    axios.post('http://104.236.71.66:3000/api/students', user).then(function (response) {\n      console.log(response);\n      _this.clearForm();\n    }).catch(console.log);\n  },\n  clearForm: function clearForm() {\n    this.setState({ email: \"\", password: \"\" });\n  },\n\n\n  render: function render() {\n\n    return _react2.default.createElement(\n      \"div\",\n      null,\n      _react2.default.createElement(\n        \"h1\",\n        null,\n        \"Register\"\n      ),\n      _react2.default.createElement(\n        \"h3\",\n        null,\n        \"Beacon: \",\n        this.props.beacon\n      ),\n      _react2.default.createElement(\n        \"div\",\n        { className: \"form-group\" },\n        _react2.default.createElement(\n          \"label\",\n          { htmlFor: \"email\" },\n          \"Email:\"\n        ),\n        _react2.default.createElement(\"input\", { type: \"text\", className: \"form-control\", onChange: this.emailInputChanged, id: \"email\", value: this.state.email })\n      ),\n      _react2.default.createElement(\n        \"div\",\n        { className: \"form-group\" },\n        _react2.default.createElement(\n          \"label\",\n          { htmlFor: \"password\" },\n          \"Password:\"\n        ),\n        _react2.default.createElement(\"input\", { type: \"password\", className: \"form-control\", onChange: this.passwordInputChanged, id: \"password\", value: this.state.password })\n      ),\n      _react2.default.createElement(\n        \"button\",\n        { type: \"button\", className: \"btn btn-primary\", onClick: this.registerPressed },\n        \"Register\"\n      )\n    );\n  }\n});\n\nmodule.exports = NewRegistration;\n\n/*****************\n ** WEBPACK FOOTER\n ** ./client/components/NewRegistration.js\n ** module id = 230\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./client/components/NewRegistration.js?");
 
 /***/ },
-/* 435 */
+/* 231 */
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("\"use strict\";\n\nvar _react = __webpack_require__(1);\n\nvar _react2 = _interopRequireDefault(_react);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar NewRegistration = _react2.default.createClass({\n  displayName: \"NewRegistration\",\n  getInitialState: function getInitialState() {\n    return { email: \"\", password: \"\" };\n  },\n  emailInputChanged: function emailInputChanged(e) {\n    this.setState({ email: e.target.value });\n  },\n  passwordInputChanged: function passwordInputChanged(e) {\n    this.setState({ password: e.target.value });\n  },\n  registerPressed: function registerPressed() {\n    var user = {\n      email: this.state.email,\n      password: this.state.password\n    };\n\n    this.clearForm();\n\n    console.log(\"Registering:\", user);\n  },\n  clearForm: function clearForm() {\n    this.setState({ email: \"\", password: \"\" });\n  },\n\n\n  render: function render() {\n\n    return _react2.default.createElement(\n      \"div\",\n      null,\n      _react2.default.createElement(\n        \"h1\",\n        null,\n        \"Register\"\n      ),\n      _react2.default.createElement(\n        \"h3\",\n        null,\n        \"Beacon: \",\n        this.props.beacon\n      ),\n      _react2.default.createElement(\n        \"div\",\n        { className: \"form-group\" },\n        _react2.default.createElement(\n          \"label\",\n          { htmlFor: \"email\" },\n          \"Email:\"\n        ),\n        _react2.default.createElement(\"input\", { type: \"text\", className: \"form-control\", onChange: this.emailInputChanged, id: \"email\", value: this.state.email })\n      ),\n      _react2.default.createElement(\n        \"div\",\n        { className: \"form-group\" },\n        _react2.default.createElement(\n          \"label\",\n          { htmlFor: \"password\" },\n          \"Password:\"\n        ),\n        _react2.default.createElement(\"input\", { type: \"password\", className: \"form-control\", onChange: this.passwordInputChanged, id: \"password\", value: this.state.password })\n      ),\n      _react2.default.createElement(\n        \"button\",\n        { type: \"button\", className: \"btn btn-primary\", onClick: this.registerPressed },\n        \"Register\"\n      )\n    );\n  }\n});\n\nmodule.exports = NewRegistration;\n\n/*****************\n ** WEBPACK FOOTER\n ** ./client/components/NewRegistration.js\n ** module id = 435\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./client/components/NewRegistration.js?");
+	eval("\"use strict\";\n\nvar _react = __webpack_require__(1);\n\nvar _react2 = _interopRequireDefault(_react);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar InvalidRegistration = _react2.default.createClass({\n  displayName: \"InvalidRegistration\",\n\n\n  render: function render() {\n\n    return _react2.default.createElement(\n      \"div\",\n      null,\n      _react2.default.createElement(\n        \"h1\",\n        null,\n        \"Invalid\"\n      )\n    );\n  }\n});\n\nmodule.exports = InvalidRegistration;\n\n/*****************\n ** WEBPACK FOOTER\n ** ./client/components/InvalidRegistration.js\n ** module id = 231\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./client/components/InvalidRegistration.js?");
 
 /***/ },
-/* 436 */
+/* 232 */
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("\"use strict\";\n\nvar _react = __webpack_require__(1);\n\nvar _react2 = _interopRequireDefault(_react);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar InvalidRegistration = _react2.default.createClass({\n  displayName: \"InvalidRegistration\",\n\n\n  render: function render() {\n\n    return _react2.default.createElement(\n      \"div\",\n      null,\n      _react2.default.createElement(\n        \"h1\",\n        null,\n        \"Invalid\"\n      )\n    );\n  }\n});\n\nmodule.exports = InvalidRegistration;\n\n/*****************\n ** WEBPACK FOOTER\n ** ./client/components/InvalidRegistration.js\n ** module id = 436\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./client/components/InvalidRegistration.js?");
+	eval("\"use strict\";\n\nvar _react = __webpack_require__(1);\n\nvar _react2 = _interopRequireDefault(_react);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Spinner = _react2.default.createClass({\n  displayName: \"Spinner\",\n\n\n  render: function render() {\n\n    return _react2.default.createElement(\n      \"div\",\n      { className: \"spinnerContainer\" },\n      _react2.default.createElement(\"span\", { className: \"glyphicon glyphicon-refresh spinner\" })\n    );\n  }\n});\n\nmodule.exports = Spinner;\n\n/*****************\n ** WEBPACK FOOTER\n ** ./client/components/Spinner.js\n ** module id = 232\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./client/components/Spinner.js?");
 
 /***/ },
-/* 437 */
+/* 233 */
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("\"use strict\";\n\nvar _react = __webpack_require__(1);\n\nvar _react2 = _interopRequireDefault(_react);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Spinner = _react2.default.createClass({\n  displayName: \"Spinner\",\n\n\n  render: function render() {\n\n    return _react2.default.createElement(\n      \"div\",\n      { className: \"spinnerContainer\" },\n      _react2.default.createElement(\"span\", { className: \"glyphicon glyphicon-refresh spinner\" })\n    );\n  }\n});\n\nmodule.exports = Spinner;\n\n/*****************\n ** WEBPACK FOOTER\n ** ./client/components/Spinner.js\n ** module id = 437\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./client/components/Spinner.js?");
+	eval("\"use strict\";\n\nvar _react = __webpack_require__(1);\n\nvar _react2 = _interopRequireDefault(_react);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Home = _react2.default.createClass({\n  displayName: \"Home\",\n\n  render: function render() {\n    return _react2.default.createElement(\n      \"div\",\n      null,\n      _react2.default.createElement(\n        \"h1\",\n        null,\n        \"Home Page\"\n      )\n    );\n  }\n});\n\nmodule.exports = Home;\n\n/*****************\n ** WEBPACK FOOTER\n ** ./client/components/Home.js\n ** module id = 233\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./client/components/Home.js?");
+
+/***/ },
+/* 234 */
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("\"use strict\";\n\nvar _react = __webpack_require__(1);\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactRouter = __webpack_require__(172);\n\nvar _Login = __webpack_require__(228);\n\nvar _Login2 = _interopRequireDefault(_Login);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Navbar = _react2.default.createClass({\n  displayName: \"Navbar\",\n\n  render: function render() {\n    return _react2.default.createElement(\n      \"nav\",\n      { className: \"navbar navbar-default\" },\n      _react2.default.createElement(\n        \"div\",\n        { className: \"container-fluid\" },\n        _react2.default.createElement(\n          \"div\",\n          { className: \"navbar-header\" },\n          _react2.default.createElement(\n            \"a\",\n            { className: \"navbar-brand\", href: \"/\" },\n            \"Demo Day Dashboard\"\n          )\n        ),\n        _react2.default.createElement(\n          \"ul\",\n          { className: \"nav navbar-nav\" },\n          _react2.default.createElement(\n            \"li\",\n            null,\n            _react2.default.createElement(\n              _reactRouter.Link,\n              { to: \"/login\" },\n              \"Login\"\n            )\n          )\n        )\n      )\n    );\n  }\n});\n\nmodule.exports = Navbar;\n\n/*****************\n ** WEBPACK FOOTER\n ** ./client/components/Navbar.js\n ** module id = 234\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./client/components/Navbar.js?");
 
 /***/ }
 /******/ ]);

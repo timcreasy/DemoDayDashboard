@@ -8,7 +8,7 @@ const Navbar = React.createClass({
       <nav className="navbar navbar-default">
         <div className="container-fluid">
           <div className="navbar-header">
-            <a className="navbar-brand" href="#">Demo Day Dashboard</a>
+            <a className="navbar-brand" href="/">Demo Day Dashboard</a>
           </div>
           <ul className="nav navbar-nav">
             <li><Link to="/login">Login</Link></li>

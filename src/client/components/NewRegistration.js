@@ -16,13 +16,17 @@ const NewRegistration = React.createClass({
 
   registerPressed() {
     const user = {
+      beaconId: this.props.beacon,
       email: this.state.email,
       password: this.state.password
     };
 
-    this.clearForm();
-
-    console.log("Registering:", user);
+    axios.post('http://104.236.71.66:3000/api/students', user)
+      .then(response =>  {
+        console.log(response);
+        this.clearForm();
+      })
+      .catch(console.log);
   },
 
   clearForm() {

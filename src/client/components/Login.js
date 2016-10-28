@@ -1,9 +1,10 @@
 import React from "react";
+import { browserHistory } from 'react-router';
 
 let Login = React.createClass({
 
   getInitialState() {
-    return ({email: "", password: ""});
+    return ({email: "", password: "", error: ""});
   },
 
   emailInputChanged(e) {
@@ -20,9 +21,19 @@ let Login = React.createClass({
       password: this.state.password
     };
 
-    this.clearForm();
+    axios.post('http://104.236.71.66:3000/api/student/login', user)
+      .then(({data}) =>  {
+        if (data.student) {
+          this.setState({error: ""});
+          browserHistory.push('/');
+        }
 
-    console.log("Logging in:", user);
+        if (data.msg) {
+          this.setState({error: data.msg});
+        }
+      })
+      .catch(console.log);
+
   },
 
   clearForm() {
@@ -33,6 +44,7 @@ let Login = React.createClass({
     return (
       <div>
         <h1>Login</h1>
+        <h1>{this.state.error}</h1>
         <div className="form-group">
           <label htmlFor="email">Email:</label>
           <input type="text" className="form-control" onChange={this.emailInputChanged} id="email" value={this.state.email}/>

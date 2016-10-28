@@ -6,10 +6,9 @@ app.use(express.static('public'));
 app.get('/api/:beaconId', (req, res) => {
 
   setTimeout(() => {
-    res.json({msg: "Invalid"});
+    res.json({msg: "OK"});
   }, 2000);
 
-  
 });
 
 app.listen(3000, () => {

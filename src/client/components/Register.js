@@ -13,15 +13,18 @@ const Register = React.createClass({
   },
 
   componentWillMount() {
-    axios.get('http://localhost:3000/api/' + this.props.params.beaconId)
-      .then(({data: {msg}}) => {
-        if (msg === "Invalid") {
-          this.setState({correctComponent: <InvalidRegistration />})
-        } else {
-          this.setState({correctComponent: <NewRegistration beacon={this.props.params.beaconId} />});
-        }
-      })
-      .catch(console.log);
+    // axios.get('http://localhost:3000/api/' + this.props.params.beaconId)
+    //   .then(({data: {msg}}) => {
+    //     if (msg === "Invalid") {
+    //       this.setState({correctComponent: <InvalidRegistration />})
+    //     } else {
+    //       this.setState({correctComponent: <NewRegistration beacon={this.props.params.beaconId} />});
+    //     }
+    //   })
+    //   .catch(console.log);
+
+    this.setState({correctComponent: <NewRegistration beacon={this.props.params.beaconId} />});
+
   },
 
   render: function() {

@@ -3,7 +3,7 @@ const webpack = require('webpack');
 
 module.exports = {
   context: path.join(__dirname, "src"),
-  devtool: 'eval',
+  devtool: 'source-map',
   entry: './client/app.js',
   output: {
     path: path.join(__dirname, 'public/dist'),

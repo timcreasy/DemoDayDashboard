@@ -81,10 +81,14 @@
 	_reactDom2.default.render(_react2.default.createElement(
 	  _reactRouter.Router,
 	  { history: _reactRouter.browserHistory },
-	  _react2.default.createElement(_reactRouter.Route, { path: "/", component: _Login2.default }),
-	  _react2.default.createElement(_reactRouter.Route, { path: "/login", component: _Login2.default }),
-	  _react2.default.createElement(_reactRouter.Route, { path: "register/:beaconId", component: _Register2.default }),
-	  _react2.default.createElement(_reactRouter.Route, { path: "*", component: _Test2.default })
+	  _react2.default.createElement(
+	    _reactRouter.Route,
+	    { path: "/", component: _Application2.default },
+	    _react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: "/login", component: _Login2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: "register/:beaconId", component: _Register2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: "*", component: _Test2.default })
+	  )
 	), document.getElementById('app'));
 
 /***/ },
@@ -26805,11 +26809,6 @@
 	        "button",
 	        { type: "button", className: "btn btn-primary", onClick: this.loginPressed },
 	        "Login"
-	      ),
-	      _react2.default.createElement(
-	        _reactRouter.Link,
-	        { to: "/register/dafddafdasdf" },
-	        "REgister"
 	      )
 	    );
 	  }
@@ -26865,6 +26864,10 @@
 	
 	var _InvalidRegistration2 = _interopRequireDefault(_InvalidRegistration);
 	
+	var _RegisteredBeacon = __webpack_require__(236);
+	
+	var _RegisteredBeacon2 = _interopRequireDefault(_RegisteredBeacon);
+	
 	var _Spinner = __webpack_require__(234);
 	
 	var _Spinner2 = _interopRequireDefault(_Spinner);
@@ -26876,21 +26879,24 @@
 	  getInitialState: function getInitialState() {
 	    return {
 	      isRegistered: false,
-	      correctComponent: _react2.default.createElement(_Spinner2.default, null)
+	      registerComponent: _react2.default.createElement(_Spinner2.default, null)
 	    };
 	  },
 	  componentWillMount: function componentWillMount() {
-	    // axios.get('http://localhost:3000/api/' + this.props.params.beaconId)
-	    //   .then(({data: {msg}}) => {
-	    //     if (msg === "Invalid") {
-	    //       this.setState({correctComponent: <InvalidRegistration />})
-	    //     } else {
-	    //       this.setState({correctComponent: <NewRegistration beacon={this.props.params.beaconId} />});
-	    //     }
-	    //   })
-	    //   .catch(console.log);
+	    var _this = this;
 	
-	    this.setState({ correctComponent: _react2.default.createElement(_NewRegistration2.default, { beacon: this.props.params.beaconId }) });
+	    axios.get('http://localhost:3000/api/' + this.props.params.beaconId).then(function (_ref) {
+	      var msg = _ref.data.msg;
+	
+	      if (msg === "Invalid") {
+	        _this.setState({ registerComponent: _react2.default.createElement(_InvalidRegistration2.default, null) });
+	      } else if (msg === "Registered") {
+	        console.log("regisss");
+	        _this.setState({ registerComponent: _react2.default.createElement(_RegisteredBeacon2.default, null) });
+	      } else {
+	        _this.setState({ registerComponent: _react2.default.createElement(_NewRegistration2.default, { beacon: _this.props.params.beaconId }) });
+	      }
+	    }).catch(console.log);
 	  },
 	
 	
@@ -26898,7 +26904,7 @@
 	    return _react2.default.createElement(
 	      "div",
 	      null,
-	      this.state.correctComponent
+	      this.state.registerComponent
 	    );
 	  }
 	});
@@ -27018,7 +27024,7 @@
 	      _react2.default.createElement(
 	        "h1",
 	        null,
-	        "Invalid"
+	        "Invalid beacon"
 	      )
 	    );
 	  }
@@ -27083,6 +27089,38 @@
 	});
 	
 	module.exports = Test;
+
+/***/ },
+/* 236 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var RegisteredBeacon = _react2.default.createClass({
+	  displayName: "RegisteredBeacon",
+	
+	
+	  render: function render() {
+	
+	    return _react2.default.createElement(
+	      "div",
+	      null,
+	      _react2.default.createElement(
+	        "h1",
+	        null,
+	        "Beacon already registered!"
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = RegisteredBeacon;
 
 /***/ }
 /******/ ]);

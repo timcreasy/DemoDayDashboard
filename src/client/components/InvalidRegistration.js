@@ -6,7 +6,7 @@ const InvalidRegistration = React.createClass({
 
     return (
       <div>
-        <h1>Invalid</h1>
+        <h1>Invalid beacon</h1>
       </div>
     );
   }

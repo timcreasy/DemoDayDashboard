@@ -9,9 +9,11 @@ import Test from "./components/Test";
 
 ReactDOM.render((
   <Router history={browserHistory}>
-    <Route path="/" component={Login}/>
-    <Route path="/login" component={Login}/>
-    <Route path="register/:beaconId" component={Register}/>
-    <Route path="*" component={Test} />
+    <Route path="/" component={Application} >
+      <IndexRoute component={Home} />
+      <Route path="/login" component={Login}/>
+      <Route path="register/:beaconId" component={Register}/>
+      <Route path="*" component={Test} />
+    </Route>
   </Router>
 ), document.getElementById('app'));

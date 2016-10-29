@@ -54,7 +54,6 @@ let Login = React.createClass({
           <input type="password" className="form-control" onChange={this.passwordInputChanged} id="password" value={this.state.password}/>
         </div>
         <button type="button" className="btn btn-primary" onClick={this.loginPressed}>Login</button>
-        <Link to="/register/dafddafdasdf">REgister</Link>
       </div>
     );
   }

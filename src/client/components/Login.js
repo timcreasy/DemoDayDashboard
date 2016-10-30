@@ -21,7 +21,7 @@ let Login = React.createClass({
       password: this.state.password
     };
 
-    axios.post('http://104.236.71.66:3000/api/student/login', user)
+    axios.post('http://localhost:3000/api/login', user)
       .then(({data}) =>  {
         if (data.student) {
           this.setState({error: ""});

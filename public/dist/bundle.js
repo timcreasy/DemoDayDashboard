@@ -72,7 +72,7 @@
 	
 	var _Home2 = _interopRequireDefault(_Home);
 	
-	var _Test = __webpack_require__(235);
+	var _Test = __webpack_require__(236);
 	
 	var _Test2 = _interopRequireDefault(_Test);
 	
@@ -26753,7 +26753,7 @@
 	      password: this.state.password
 	    };
 	
-	    axios.post('http://104.236.71.66:3000/api/student/login', user).then(function (_ref) {
+	    axios.post('http://localhost:3000/api/login', user).then(function (_ref) {
 	      var data = _ref.data;
 	
 	      if (data.student) {
@@ -26864,11 +26864,11 @@
 	
 	var _InvalidRegistration2 = _interopRequireDefault(_InvalidRegistration);
 	
-	var _RegisteredBeacon = __webpack_require__(236);
+	var _RegisteredBeacon = __webpack_require__(234);
 	
 	var _RegisteredBeacon2 = _interopRequireDefault(_RegisteredBeacon);
 	
-	var _Spinner = __webpack_require__(234);
+	var _Spinner = __webpack_require__(235);
 	
 	var _Spinner2 = _interopRequireDefault(_Spinner);
 	
@@ -27043,6 +27043,38 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	var RegisteredBeacon = _react2.default.createClass({
+	  displayName: "RegisteredBeacon",
+	
+	
+	  render: function render() {
+	
+	    return _react2.default.createElement(
+	      "div",
+	      null,
+	      _react2.default.createElement(
+	        "h1",
+	        null,
+	        "Beacon already registered!"
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = RegisteredBeacon;
+
+/***/ },
+/* 235 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
 	var Spinner = _react2.default.createClass({
 	  displayName: "Spinner",
 	
@@ -27060,7 +27092,7 @@
 	module.exports = Spinner;
 
 /***/ },
-/* 235 */
+/* 236 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27088,38 +27120,6 @@
 	});
 	
 	module.exports = Test;
-
-/***/ },
-/* 236 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var RegisteredBeacon = _react2.default.createClass({
-	  displayName: "RegisteredBeacon",
-	
-	
-	  render: function render() {
-	
-	    return _react2.default.createElement(
-	      "div",
-	      null,
-	      _react2.default.createElement(
-	        "h1",
-	        null,
-	        "Beacon already registered!"
-	      )
-	    );
-	  }
-	});
-	
-	module.exports = RegisteredBeacon;
 
 /***/ }
 /******/ ]);

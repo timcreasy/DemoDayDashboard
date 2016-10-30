@@ -2,6 +2,12 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const axios = require('axios');
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
 
 app.use(express.static(__dirname + '/public'))
 
@@ -41,7 +47,8 @@ app.get('/api/:beaconId', (req, res) => {
 
   if (beaconValid) {
 
-    axios.get('http://104.236.71.66:3000/api/students/' + req.params.beaconId)
+    axios
+      .get('http://104.236.71.66:3000/api/students/' + req.params.beaconId)
       .then(({data: {student}}) => {
         if (student.length > 0) {
           res.json({msg: "Registered"});
@@ -57,10 +64,25 @@ app.get('/api/:beaconId', (req, res) => {
 
 });
 
+
+app.post('/api/login', (req, res) => {
+
+    axios
+      .post('http://104.236.71.66:3000/api/student/login', {
+        email: req.body.email,
+        password: req.body.password
+      })
+      .then(response => {
+        res.json(response.data);
+      })
+      .catch(console.log);
+
+
+});
+
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
 })
-
 
 
 app.listen(3000, () => {

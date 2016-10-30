@@ -44,11 +44,15 @@ const HomeView = React.createClass({
                                       .indexOf(favorite.employer);
             let employer = this.state.employers[employerPosition];
 
+            let emailLink = "mailto:" + employer.email;
+
             return (
-              <div className="card card-block" key={index}>
-                <h4 className="card-title">{employer.name}</h4>
-                <p className="card-text"><strong>Company: </strong>{employer.company}</p>
-                <p className="card-text"><strong>Email: </strong>{employer.email}</p>
+              <div className="col-sm-6" key={index}>
+                <div className="card card-block">
+                  <h3 className="card-title">{employer.name}</h3>
+                  <p className="card-text"><strong>Company: </strong>{employer.company}</p>
+                  <a href={emailLink} className="btn btn-primary">Email</a>
+                </div>
               </div>
             );
           })

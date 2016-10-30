@@ -5,19 +5,16 @@ import Login from "./Login";
 const Navbar = React.createClass({
   render: function() {
     return (
-      <nav className="navbar navbar-default">
-        <div className="container-fluid">
-          <div className="navbar-header">
-            <a className="navbar-brand" href="/">Demo Day Dashboard</a>
-          </div>
-          <ul className="nav navbar-nav">
-            <li><Link to="/login">Login</Link></li>
-          </ul>
-        </div>
+      <nav className="navbar navbar-light bg-faded">
+        <a className="navbar-brand" href="/">Demo Day Dashboard</a>
+        <ul className="nav navbar-nav">
+          <li className="nav-item">
+            <a className="nav-link" href="/login">Login</a>
+          </li>
+        </ul>
       </nav>
     );
   }
 });
 
 module.exports = Navbar;
-

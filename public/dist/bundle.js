@@ -64,7 +64,7 @@
 	
 	var _Login2 = _interopRequireDefault(_Login);
 	
-	var _Register = __webpack_require__(231);
+	var _Register = __webpack_require__(233);
 	
 	var _Register2 = _interopRequireDefault(_Register);
 	
@@ -72,7 +72,7 @@
 	
 	var _Home2 = _interopRequireDefault(_Home);
 	
-	var _Test = __webpack_require__(236);
+	var _Test = __webpack_require__(237);
 	
 	var _Test2 = _interopRequireDefault(_Test);
 	
@@ -26689,30 +26689,22 @@
 	  render: function render() {
 	    return _react2.default.createElement(
 	      "nav",
-	      { className: "navbar navbar-default" },
+	      { className: "navbar navbar-light bg-faded" },
 	      _react2.default.createElement(
-	        "div",
-	        { className: "container-fluid" },
+	        "a",
+	        { className: "navbar-brand", href: "/" },
+	        "Demo Day Dashboard"
+	      ),
+	      _react2.default.createElement(
+	        "ul",
+	        { className: "nav navbar-nav" },
 	        _react2.default.createElement(
-	          "div",
-	          { className: "navbar-header" },
+	          "li",
+	          { className: "nav-item" },
 	          _react2.default.createElement(
 	            "a",
-	            { className: "navbar-brand", href: "/" },
-	            "Demo Day Dashboard"
-	          )
-	        ),
-	        _react2.default.createElement(
-	          "ul",
-	          { className: "nav navbar-nav" },
-	          _react2.default.createElement(
-	            "li",
-	            null,
-	            _react2.default.createElement(
-	              _reactRouter.Link,
-	              { to: "/login" },
-	              "Login"
-	            )
+	            { className: "nav-link", href: "/login" },
+	            "Login"
 	          )
 	        )
 	      )
@@ -26828,11 +26820,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Spinner = __webpack_require__(235);
+	var _Spinner = __webpack_require__(231);
 	
 	var _Spinner2 = _interopRequireDefault(_Spinner);
 	
-	var _HomeView = __webpack_require__(237);
+	var _HomeView = __webpack_require__(232);
 	
 	var _HomeView2 = _interopRequireDefault(_HomeView);
 	
@@ -26890,19 +26882,148 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _NewRegistration = __webpack_require__(232);
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Spinner = _react2.default.createClass({
+	  displayName: "Spinner",
+	
+	
+	  render: function render() {
+	
+	    return _react2.default.createElement(
+	      "div",
+	      { className: "spinnerContainer" },
+	      _react2.default.createElement("span", { className: "glyphicon glyphicon-refresh spinner" })
+	    );
+	  }
+	});
+	
+	module.exports = Spinner;
+
+/***/ },
+/* 232 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var HomeView = _react2.default.createClass({
+	  displayName: 'HomeView',
+	  getInitialState: function getInitialState() {
+	    return {
+	      favorites: [],
+	      employers: []
+	    };
+	  },
+	  componentWillMount: function componentWillMount() {
+	    this.loadUserLikes(this.props.user.beaconId);
+	  },
+	  loadUserLikes: function loadUserLikes(beaconId) {
+	    var _this = this;
+	
+	    axios.get('http://104.236.71.66:3000/api/users/').then(function (_ref) {
+	      var users = _ref.data.users;
+	
+	      return _this.setState({ employers: users });
+	    }).then(function () {
+	      return axios.get('http://104.236.71.66:3000/api/beacon/' + beaconId);
+	    }).then(function (_ref2) {
+	      var favorites = _ref2.data.favorites;
+	
+	      _this.setState({ favorites: favorites });
+	    }).catch(console.log);
+	  },
+	
+	
+	  render: function render() {
+	    var _this2 = this;
+	
+	    return _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        'h1',
+	        null,
+	        'Favorites'
+	      ),
+	      this.state.favorites.map(function (favorite, index) {
+	
+	        var employerPosition = _this2.state.employers.map(function (employer) {
+	          return employer._id;
+	        }).indexOf(favorite.employer);
+	        var employer = _this2.state.employers[employerPosition];
+	
+	        var emailLink = "mailto:" + employer.email;
+	
+	        return _react2.default.createElement(
+	          'div',
+	          { className: 'col-sm-6', key: index },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'card card-block' },
+	            _react2.default.createElement(
+	              'h3',
+	              { className: 'card-title' },
+	              employer.name
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'card-text' },
+	              _react2.default.createElement(
+	                'strong',
+	                null,
+	                'Company: '
+	              ),
+	              employer.company
+	            ),
+	            _react2.default.createElement(
+	              'a',
+	              { href: emailLink, className: 'btn btn-primary' },
+	              'Email'
+	            )
+	          )
+	        );
+	      })
+	    );
+	  }
+	});
+	
+	module.exports = HomeView;
+	
+	// <div className="card card-block" key={index}>
+	//   <h4 className="card-title">{employer.name}</h4>
+	//   <p className="card-text"><strong>Company: </strong>{employer.company}</p>
+	//   <p className="card-text"><strong>Email: </strong>{employer.email}</p>
+	// </div>
+
+/***/ },
+/* 233 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _NewRegistration = __webpack_require__(234);
 	
 	var _NewRegistration2 = _interopRequireDefault(_NewRegistration);
 	
-	var _InvalidRegistration = __webpack_require__(233);
+	var _InvalidRegistration = __webpack_require__(235);
 	
 	var _InvalidRegistration2 = _interopRequireDefault(_InvalidRegistration);
 	
-	var _RegisteredBeacon = __webpack_require__(234);
+	var _RegisteredBeacon = __webpack_require__(236);
 	
 	var _RegisteredBeacon2 = _interopRequireDefault(_RegisteredBeacon);
 	
-	var _Spinner = __webpack_require__(235);
+	var _Spinner = __webpack_require__(231);
 	
 	var _Spinner2 = _interopRequireDefault(_Spinner);
 	
@@ -26945,7 +27066,7 @@
 	module.exports = Register;
 
 /***/ },
-/* 232 */
+/* 234 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27034,7 +27155,7 @@
 	module.exports = NewRegistration;
 
 /***/ },
-/* 233 */
+/* 235 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27066,7 +27187,7 @@
 	module.exports = InvalidRegistration;
 
 /***/ },
-/* 234 */
+/* 236 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27098,35 +27219,7 @@
 	module.exports = RegisteredBeacon;
 
 /***/ },
-/* 235 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var Spinner = _react2.default.createClass({
-	  displayName: "Spinner",
-	
-	
-	  render: function render() {
-	
-	    return _react2.default.createElement(
-	      "div",
-	      { className: "spinnerContainer" },
-	      _react2.default.createElement("span", { className: "glyphicon glyphicon-refresh spinner" })
-	    );
-	  }
-	});
-	
-	module.exports = Spinner;
-
-/***/ },
-/* 236 */
+/* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27154,100 +27247,6 @@
 	});
 	
 	module.exports = Test;
-
-/***/ },
-/* 237 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var HomeView = _react2.default.createClass({
-	  displayName: 'HomeView',
-	  getInitialState: function getInitialState() {
-	    return {
-	      favorites: [],
-	      employers: []
-	    };
-	  },
-	  componentWillMount: function componentWillMount() {
-	    this.loadUserLikes(this.props.user.beaconId);
-	  },
-	  loadUserLikes: function loadUserLikes(beaconId) {
-	    var _this = this;
-	
-	    axios.get('http://104.236.71.66:3000/api/users/').then(function (_ref) {
-	      var users = _ref.data.users;
-	
-	      return _this.setState({ employers: users });
-	    }).then(function () {
-	      return axios.get('http://104.236.71.66:3000/api/beacon/' + beaconId);
-	    }).then(function (_ref2) {
-	      var favorites = _ref2.data.favorites;
-	
-	      _this.setState({ favorites: favorites });
-	    }).catch(console.log);
-	  },
-	
-	
-	  render: function render() {
-	    var _this2 = this;
-	
-	    return _react2.default.createElement(
-	      'div',
-	      null,
-	      _react2.default.createElement(
-	        'h1',
-	        null,
-	        'Favorites'
-	      ),
-	      this.state.favorites.map(function (favorite, index) {
-	
-	        var employerPosition = _this2.state.employers.map(function (employer) {
-	          return employer._id;
-	        }).indexOf(favorite.employer);
-	        var employer = _this2.state.employers[employerPosition];
-	
-	        return _react2.default.createElement(
-	          'div',
-	          { className: 'card card-block', key: index },
-	          _react2.default.createElement(
-	            'h4',
-	            { className: 'card-title' },
-	            employer.name
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            { className: 'card-text' },
-	            _react2.default.createElement(
-	              'strong',
-	              null,
-	              'Company: '
-	            ),
-	            employer.company
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            { className: 'card-text' },
-	            _react2.default.createElement(
-	              'strong',
-	              null,
-	              'Email: '
-	            ),
-	            employer.email
-	          )
-	        );
-	      })
-	    );
-	  }
-	});
-	
-	module.exports = HomeView;
 
 /***/ }
 /******/ ]);

@@ -27208,8 +27208,6 @@
 	      ),
 	      this.state.favorites.map(function (favorite, index) {
 	
-	        console.log("A", favorite.employer);
-	
 	        var employerPosition = _this2.state.employers.map(function (employer) {
 	          return employer._id;
 	        }).indexOf(favorite.employer);
@@ -27217,11 +27215,31 @@
 	
 	        return _react2.default.createElement(
 	          'div',
-	          { key: index },
+	          { className: 'card card-block', key: index },
 	          _react2.default.createElement(
-	            'h1',
-	            null,
+	            'h4',
+	            { className: 'card-title' },
 	            employer.name
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'card-text' },
+	            _react2.default.createElement(
+	              'strong',
+	              null,
+	              'Company: '
+	            ),
+	            employer.company
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'card-text' },
+	            _react2.default.createElement(
+	              'strong',
+	              null,
+	              'Email: '
+	            ),
+	            employer.email
 	          )
 	        );
 	      })

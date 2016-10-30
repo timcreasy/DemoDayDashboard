@@ -37,8 +37,6 @@ const HomeView = React.createClass({
         {
           this.state.favorites.map((favorite, index) => {
 
-            console.log("A", favorite.employer);
-
             let employerPosition = this.state.employers
                                       .map(employer => {
                                         return employer._id; 
@@ -47,8 +45,10 @@ const HomeView = React.createClass({
             let employer = this.state.employers[employerPosition];
 
             return (
-              <div key={index}>
-                <h1>{employer.name}</h1>
+              <div className="card card-block" key={index}>
+                <h4 className="card-title">{employer.name}</h4>
+                <p className="card-text"><strong>Company: </strong>{employer.company}</p>
+                <p className="card-text"><strong>Email: </strong>{employer.email}</p>
               </div>
             );
           })

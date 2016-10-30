@@ -26826,10 +26826,42 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _Spinner = __webpack_require__(235);
+	
+	var _Spinner2 = _interopRequireDefault(_Spinner);
+	
+	var _HomeView = __webpack_require__(237);
+	
+	var _HomeView2 = _interopRequireDefault(_HomeView);
+	
+	var _reactRouter = __webpack_require__(172);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var Home = _react2.default.createClass({
 	  displayName: "Home",
+	  getInitialState: function getInitialState() {
+	    return {
+	      currentUser: "",
+	      isLoggedIn: false,
+	      viewComponent: _react2.default.createElement(_Spinner2.default, null)
+	    };
+	  },
+	  componentWillMount: function componentWillMount() {
+	    var _this = this;
+	
+	    axios.get('http://localhost:3000/api/user').then(function (_ref) {
+	      var data = _ref.data;
+	
+	      if (data.msg === "No user") {
+	        _reactRouter.browserHistory.push('/login');
+	      } else {
+	        _this.setState({ viewComponent: _react2.default.createElement(_HomeView2.default, null) });
+	        _this.setState({ currentUser: data });
+	      }
+	    }).catch(console.log);
+	  },
+	
 	
 	  render: function render() {
 	    return _react2.default.createElement(
@@ -26838,7 +26870,7 @@
 	      _react2.default.createElement(
 	        "h1",
 	        null,
-	        "Home Page"
+	        this.state.viewComponent
 	      )
 	    );
 	  }
@@ -27120,6 +27152,36 @@
 	});
 	
 	module.exports = Test;
+
+/***/ },
+/* 237 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var HomeView = _react2.default.createClass({
+	  displayName: "HomeView",
+	
+	  render: function render() {
+	    return _react2.default.createElement(
+	      "div",
+	      null,
+	      _react2.default.createElement(
+	        "h1",
+	        null,
+	        "Logged in successfully!"
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = HomeView;
 
 /***/ }
 /******/ ]);

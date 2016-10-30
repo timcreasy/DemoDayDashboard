@@ -3,13 +3,25 @@ const path = require('path');
 const app = express();
 const axios = require('axios');
 const bodyParser = require('body-parser');
+const session = require('express-session');
+const sess = {
+  secret: 'superdupersecretkey',
+};
 
+app.use(session(sess));
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
+app.use(express.static(__dirname + '/public'));
 
-app.use(express.static(__dirname + '/public'))
+app.get('/api/user', (req, res) => {
+  if (req.session.user) {
+    res.json(req.session.user);
+  } else {
+    res.json({msg: "No user"});
+  }
+});
 
 app.get('/api/:beaconId', (req, res) => {
 
@@ -73,12 +85,17 @@ app.post('/api/login', (req, res) => {
         password: req.body.password
       })
       .then(response => {
+        if (response.data.student) {
+          req.session.user = response.data.student;
+        }
         res.json(response.data);
       })
       .catch(console.log);
 
 
 });
+
+
 
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'public', 'index.html'))

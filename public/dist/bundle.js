@@ -26891,7 +26891,6 @@
 	      if (msg === "Invalid") {
 	        _this.setState({ registerComponent: _react2.default.createElement(_InvalidRegistration2.default, null) });
 	      } else if (msg === "Registered") {
-	        console.log("regisss");
 	        _this.setState({ registerComponent: _react2.default.createElement(_RegisteredBeacon2.default, null) });
 	      } else {
 	        _this.setState({ registerComponent: _react2.default.createElement(_NewRegistration2.default, { beacon: _this.props.params.beaconId }) });

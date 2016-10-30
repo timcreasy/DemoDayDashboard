@@ -19,7 +19,6 @@ const Register = React.createClass({
         if (msg === "Invalid") {
           this.setState({registerComponent: <InvalidRegistration />})
         } else if (msg === "Registered") {
-          console.log("regisss");
           this.setState({registerComponent: <RegisteredBeacon />})
         } else {
           this.setState({registerComponent: <NewRegistration beacon={this.props.params.beaconId} />});

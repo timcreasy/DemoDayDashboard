@@ -20,7 +20,7 @@ const HomeView = React.createClass({
         return this.setState({employers: users});
       })
       .then(() => {
-        return axios.get('http://104.236.71.66:3000/api/favorites/' + beaconId)
+        return axios.get('http://104.236.71.66:3000/api/beacon/' + beaconId)
       })
       .then(({data: {favorites}}) =>  {
         this.setState({favorites: favorites});

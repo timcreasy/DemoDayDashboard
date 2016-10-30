@@ -27186,7 +27186,7 @@
 	
 	      return _this.setState({ employers: users });
 	    }).then(function () {
-	      return axios.get('http://104.236.71.66:3000/api/favorites/' + beaconId);
+	      return axios.get('http://104.236.71.66:3000/api/beacon/' + beaconId);
 	    }).then(function (_ref2) {
 	      var favorites = _ref2.data.favorites;
 	

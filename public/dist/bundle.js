@@ -26780,11 +26780,11 @@
 	        null,
 	        "Login"
 	      ),
-	      _react2.default.createElement(
-	        "h1",
-	        null,
+	      this.state.error ? _react2.default.createElement(
+	        "div",
+	        { className: "alert alert-danger", role: "alert" },
 	        this.state.error
-	      ),
+	      ) : _react2.default.createElement("h1", null),
 	      _react2.default.createElement(
 	        "div",
 	        { className: "form-group" },

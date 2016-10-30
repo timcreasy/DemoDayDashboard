@@ -44,7 +44,7 @@ let Login = React.createClass({
     return (
       <div>
         <h1>Login</h1>
-        <h1>{this.state.error}</h1>
+        { this.state.error ? <div className="alert alert-danger" role="alert">{this.state.error}</div> : <h1></h1> }
         <div className="form-group">
           <label htmlFor="email">Email:</label>
           <input type="text" className="form-control" onChange={this.emailInputChanged} id="email" value={this.state.email}/>

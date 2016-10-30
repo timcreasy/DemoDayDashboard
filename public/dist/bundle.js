@@ -26647,7 +26647,9 @@
 	var Application = _react2.default.createClass({
 	  displayName: "Application",
 	
+	
 	  render: function render() {
+	
 	    return _react2.default.createElement(
 	      "div",
 	      null,
@@ -26856,8 +26858,8 @@
 	      if (data.msg === "No user") {
 	        _reactRouter.browserHistory.push('/login');
 	      } else {
-	        _this.setState({ viewComponent: _react2.default.createElement(_HomeView2.default, null) });
 	        _this.setState({ currentUser: data });
+	        _this.setState({ viewComponent: _react2.default.createElement(_HomeView2.default, { user: _this.state.currentUser }) });
 	      }
 	    }).catch(console.log);
 	  },
@@ -27167,15 +27169,30 @@
 	
 	var HomeView = _react2.default.createClass({
 	  displayName: "HomeView",
+	  componentWillMount: function componentWillMount() {
+	    this.loadUserLikes(this.props.user.beaconId);
+	  },
+	  loadUserLikes: function loadUserLikes(beaconId) {
+	
+	    axios.get('http://104.236.71.66:3000/api/favorites/' + beaconId).then(function (_ref) {
+	      var favorites = _ref.data.favorites;
+	
+	      console.log(favorites);
+	    }).catch(console.log);
+	  },
+	
 	
 	  render: function render() {
+	
 	    return _react2.default.createElement(
 	      "div",
 	      null,
 	      _react2.default.createElement(
 	        "h1",
 	        null,
-	        "Logged in successfully!"
+	        "Logged in successfully as ",
+	        this.props.user.email,
+	        "!"
 	      )
 	    );
 	  }

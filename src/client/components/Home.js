@@ -19,14 +19,12 @@ const Home = React.createClass({
         if (data.msg === "No user") {
           browserHistory.push('/login');
         } else {
-          this.setState({viewComponent: <HomeView />});
           this.setState({currentUser: data});
+          this.setState({viewComponent: <HomeView user={this.state.currentUser} />});
         }
       })
       .catch(console.log);
   },
-
-
 
   render: function() {
     return (

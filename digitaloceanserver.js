@@ -121,6 +121,14 @@ app.get('/api/favorites/:userId', (req, res, next) => {
     });
 });
 
+app.get('/api/favorites/:beaconId', (req, res, next) => {
+  Favorite
+    .find({student: req.params.beaconId})
+    .then((favorites) => {
+       res.status(200).json({favorites: favorites});
+    });
+});
+
 app.delete('/api/favorites', (req, res, next) => {
 
   Favorite

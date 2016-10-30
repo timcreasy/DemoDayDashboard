@@ -27159,7 +27159,7 @@
 /* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	var _react = __webpack_require__(1);
 	
@@ -27168,32 +27168,63 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var HomeView = _react2.default.createClass({
-	  displayName: "HomeView",
+	  displayName: 'HomeView',
+	  getInitialState: function getInitialState() {
+	    return {
+	      favorites: [],
+	      employers: []
+	    };
+	  },
 	  componentWillMount: function componentWillMount() {
 	    this.loadUserLikes(this.props.user.beaconId);
 	  },
 	  loadUserLikes: function loadUserLikes(beaconId) {
+	    var _this = this;
 	
-	    axios.get('http://104.236.71.66:3000/api/favorites/' + beaconId).then(function (_ref) {
-	      var favorites = _ref.data.favorites;
+	    axios.get('http://104.236.71.66:3000/api/users/').then(function (_ref) {
+	      var users = _ref.data.users;
 	
-	      console.log(favorites);
+	      return _this.setState({ employers: users });
+	    }).then(function () {
+	      return axios.get('http://104.236.71.66:3000/api/favorites/' + beaconId);
+	    }).then(function (_ref2) {
+	      var favorites = _ref2.data.favorites;
+	
+	      _this.setState({ favorites: favorites });
 	    }).catch(console.log);
 	  },
 	
 	
 	  render: function render() {
+	    var _this2 = this;
 	
 	    return _react2.default.createElement(
-	      "div",
+	      'div',
 	      null,
 	      _react2.default.createElement(
-	        "h1",
+	        'h1',
 	        null,
-	        "Logged in successfully as ",
-	        this.props.user.email,
-	        "!"
-	      )
+	        'Favorites'
+	      ),
+	      this.state.favorites.map(function (favorite, index) {
+	
+	        console.log("A", favorite.employer);
+	
+	        var employerPosition = _this2.state.employers.map(function (employer) {
+	          return employer._id;
+	        }).indexOf(favorite.employer);
+	        var employer = _this2.state.employers[employerPosition];
+	
+	        return _react2.default.createElement(
+	          'div',
+	          { key: index },
+	          _react2.default.createElement(
+	            'h1',
+	            null,
+	            employer.name
+	          )
+	        );
+	      })
 	    );
 	  }
 	});

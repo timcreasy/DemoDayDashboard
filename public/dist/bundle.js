@@ -26653,7 +26653,6 @@
 	    return _react2.default.createElement(
 	      "div",
 	      null,
-	      _react2.default.createElement(_Navbar2.default, null),
 	      _react2.default.createElement(
 	        "div",
 	        { className: "container" },

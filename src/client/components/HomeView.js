@@ -16,18 +16,38 @@ const HomeView = React.createClass({
 
   loadUserData(user) {
 
-    axios.get('http://104.236.71.66:3000/api/users/')
+    // axios.get('http://104.236.71.66:3000/api/users/')
+    //   .then(({data: {users}}) => {
+    //     return this.setState({employers: users});
+    //   })
+    //   .then(() => {
+    //     return axios.get('http://104.236.71.66:3000/api/note/' + user._id)
+    //   })
+    //   .then(({data: {notes}}) => {
+    //     this.setState({notes: notes});
+    //   })
+    //   .then(() => {
+    //     return axios.get('http://104.236.71.66:3000/api/beacon/' + user.beaconId)
+    //   })
+    //   .then(({data: {favorites}}) =>  {
+    //     this.setState({favorites: favorites});
+    //   })
+    //   .catch(console.log);
+
+
+
+    axios.post('http://104.236.71.66:3000/api/users/', {})
       .then(({data: {users}}) => {
         return this.setState({employers: users});
       })
       .then(() => {
-        return axios.get('http://104.236.71.66:3000/api/note/' + user._id)
+        return axios.post('http://104.236.71.66:3000/api/note', {studentId: user._id})
       })
       .then(({data: {notes}}) => {
         this.setState({notes: notes});
       })
       .then(() => {
-        return axios.get('http://104.236.71.66:3000/api/beacon/' + user.beaconId)
+        return axios.post('http://104.236.71.66:3000/api/beacon', {beaconId: user.beaconId})
       })
       .then(({data: {favorites}}) =>  {
         this.setState({favorites: favorites});
@@ -42,7 +62,7 @@ const HomeView = React.createClass({
       employer: employer,
       student: this.props.user._id
     };
-    axios.post('http://104.236.71.66:3000/api/note', note)
+    axios.post('http://104.236.71.66:3000/api/new/note', note)
       .then(() => {
         this.loadUserData(this.props.user);
       })

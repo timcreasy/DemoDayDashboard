@@ -26766,6 +26766,8 @@
 	
 	
 	  render: function render() {
+	    var _this2 = this;
+	
 	    return _react2.default.createElement(
 	      "div",
 	      null,
@@ -26787,7 +26789,11 @@
 	          { htmlFor: "email" },
 	          "Email:"
 	        ),
-	        _react2.default.createElement("input", { type: "text", className: "form-control", onChange: this.emailInputChanged, id: "email", value: this.state.email })
+	        _react2.default.createElement("input", { type: "text", className: "form-control", onChange: this.emailInputChanged, id: "email", value: this.state.email, onKeyPress: function onKeyPress(t) {
+	            if (t.charCode === 13) {
+	              _this2.loginPressed();
+	            }
+	          } })
 	      ),
 	      _react2.default.createElement(
 	        "div",
@@ -26797,7 +26803,11 @@
 	          { htmlFor: "password" },
 	          "Password:"
 	        ),
-	        _react2.default.createElement("input", { type: "password", className: "form-control", onChange: this.passwordInputChanged, id: "password", value: this.state.password })
+	        _react2.default.createElement("input", { type: "password", className: "form-control", onChange: this.passwordInputChanged, id: "password", value: this.state.password, onKeyPress: function onKeyPress(t) {
+	            if (t.charCode === 13) {
+	              _this2.loginPressed();
+	            }
+	          } })
 	      ),
 	      _react2.default.createElement(
 	        "button",

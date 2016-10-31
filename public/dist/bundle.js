@@ -64,7 +64,7 @@
 	
 	var _Login2 = _interopRequireDefault(_Login);
 	
-	var _Register = __webpack_require__(231);
+	var _Register = __webpack_require__(233);
 	
 	var _Register2 = _interopRequireDefault(_Register);
 	
@@ -72,7 +72,7 @@
 	
 	var _Home2 = _interopRequireDefault(_Home);
 	
-	var _Test = __webpack_require__(235);
+	var _Test = __webpack_require__(237);
 	
 	var _Test2 = _interopRequireDefault(_Test);
 	
@@ -26647,7 +26647,9 @@
 	var Application = _react2.default.createClass({
 	  displayName: "Application",
 	
+	
 	  render: function render() {
+	
 	    return _react2.default.createElement(
 	      "div",
 	      null,
@@ -26687,30 +26689,22 @@
 	  render: function render() {
 	    return _react2.default.createElement(
 	      "nav",
-	      { className: "navbar navbar-default" },
+	      { className: "navbar navbar-light bg-faded" },
 	      _react2.default.createElement(
-	        "div",
-	        { className: "container-fluid" },
+	        "a",
+	        { className: "navbar-brand", href: "/" },
+	        "Demo Day Dashboard"
+	      ),
+	      _react2.default.createElement(
+	        "ul",
+	        { className: "nav navbar-nav" },
 	        _react2.default.createElement(
-	          "div",
-	          { className: "navbar-header" },
+	          "li",
+	          { className: "nav-item" },
 	          _react2.default.createElement(
 	            "a",
-	            { className: "navbar-brand", href: "/" },
-	            "Demo Day Dashboard"
-	          )
-	        ),
-	        _react2.default.createElement(
-	          "ul",
-	          { className: "nav navbar-nav" },
-	          _react2.default.createElement(
-	            "li",
-	            null,
-	            _react2.default.createElement(
-	              _reactRouter.Link,
-	              { to: "/login" },
-	              "Login"
-	            )
+	            { className: "nav-link", href: "/login" },
+	            "Login"
 	          )
 	        )
 	      )
@@ -26753,7 +26747,7 @@
 	      password: this.state.password
 	    };
 	
-	    axios.post('http://104.236.71.66:3000/api/student/login', user).then(function (_ref) {
+	    axios.post('http://localhost:3000/api/login', user).then(function (_ref) {
 	      var data = _ref.data;
 	
 	      if (data.student) {
@@ -26772,6 +26766,8 @@
 	
 	
 	  render: function render() {
+	    var _this2 = this;
+	
 	    return _react2.default.createElement(
 	      "div",
 	      null,
@@ -26780,11 +26776,11 @@
 	        null,
 	        "Login"
 	      ),
-	      _react2.default.createElement(
-	        "h1",
-	        null,
+	      this.state.error ? _react2.default.createElement(
+	        "div",
+	        { className: "alert alert-danger", role: "alert" },
 	        this.state.error
-	      ),
+	      ) : _react2.default.createElement("h1", null),
 	      _react2.default.createElement(
 	        "div",
 	        { className: "form-group" },
@@ -26793,7 +26789,11 @@
 	          { htmlFor: "email" },
 	          "Email:"
 	        ),
-	        _react2.default.createElement("input", { type: "text", className: "form-control", onChange: this.emailInputChanged, id: "email", value: this.state.email })
+	        _react2.default.createElement("input", { type: "text", className: "form-control", onChange: this.emailInputChanged, id: "email", value: this.state.email, onKeyPress: function onKeyPress(t) {
+	            if (t.charCode === 13) {
+	              _this2.loginPressed();
+	            }
+	          } })
 	      ),
 	      _react2.default.createElement(
 	        "div",
@@ -26803,7 +26803,11 @@
 	          { htmlFor: "password" },
 	          "Password:"
 	        ),
-	        _react2.default.createElement("input", { type: "password", className: "form-control", onChange: this.passwordInputChanged, id: "password", value: this.state.password })
+	        _react2.default.createElement("input", { type: "password", className: "form-control", onChange: this.passwordInputChanged, id: "password", value: this.state.password, onKeyPress: function onKeyPress(t) {
+	            if (t.charCode === 13) {
+	              _this2.loginPressed();
+	            }
+	          } })
 	      ),
 	      _react2.default.createElement(
 	        "button",
@@ -26826,10 +26830,42 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _Spinner = __webpack_require__(231);
+	
+	var _Spinner2 = _interopRequireDefault(_Spinner);
+	
+	var _HomeView = __webpack_require__(232);
+	
+	var _HomeView2 = _interopRequireDefault(_HomeView);
+	
+	var _reactRouter = __webpack_require__(172);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var Home = _react2.default.createClass({
 	  displayName: "Home",
+	  getInitialState: function getInitialState() {
+	    return {
+	      currentUser: "",
+	      isLoggedIn: false,
+	      viewComponent: _react2.default.createElement(_Spinner2.default, null)
+	    };
+	  },
+	  componentWillMount: function componentWillMount() {
+	    var _this = this;
+	
+	    axios.get('http://localhost:3000/api/user').then(function (_ref) {
+	      var data = _ref.data;
+	
+	      if (data.msg === "No user") {
+	        _reactRouter.browserHistory.push('/login');
+	      } else {
+	        _this.setState({ currentUser: data });
+	        _this.setState({ viewComponent: _react2.default.createElement(_HomeView2.default, { user: _this.state.currentUser }) });
+	      }
+	    }).catch(console.log);
+	  },
+	
 	
 	  render: function render() {
 	    return _react2.default.createElement(
@@ -26838,7 +26874,7 @@
 	      _react2.default.createElement(
 	        "h1",
 	        null,
-	        "Home Page"
+	        this.state.viewComponent
 	      )
 	    );
 	  }
@@ -26856,11 +26892,189 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _NewRegistration = __webpack_require__(232);
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Spinner = _react2.default.createClass({
+	  displayName: "Spinner",
+	
+	
+	  render: function render() {
+	
+	    return _react2.default.createElement(
+	      "div",
+	      { className: "spinnerContainer" },
+	      _react2.default.createElement("span", { className: "glyphicon glyphicon-refresh spinner" })
+	    );
+	  }
+	});
+	
+	module.exports = Spinner;
+
+/***/ },
+/* 232 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var HomeView = _react2.default.createClass({
+	  displayName: 'HomeView',
+	  getInitialState: function getInitialState() {
+	    return {
+	      favorites: [],
+	      employers: [],
+	      notes: []
+	    };
+	  },
+	  componentWillMount: function componentWillMount() {
+	    this.loadUserData(this.props.user);
+	  },
+	  loadUserData: function loadUserData(user) {
+	    var _this = this;
+	
+	    axios.get('http://104.236.71.66:3000/api/users/').then(function (_ref) {
+	      var users = _ref.data.users;
+	
+	      return _this.setState({ employers: users });
+	    }).then(function () {
+	      return axios.get('http://104.236.71.66:3000/api/note/' + user._id);
+	    }).then(function (_ref2) {
+	      var notes = _ref2.data.notes;
+	
+	      _this.setState({ notes: notes });
+	    }).then(function () {
+	      return axios.get('http://104.236.71.66:3000/api/beacon/' + user.beaconId);
+	    }).then(function (_ref3) {
+	      var favorites = _ref3.data.favorites;
+	
+	      _this.setState({ favorites: favorites });
+	    }).catch(console.log);
+	  },
+	  addNote: function addNote(noteText, employer) {
+	    var _this2 = this;
+	
+	    var note = {
+	      note: noteText,
+	      employer: employer,
+	      student: this.props.user._id
+	    };
+	    axios.post('http://104.236.71.66:3000/api/note', note).then(function () {
+	      _this2.loadUserData(_this2.props.user);
+	    }).catch(console.log);
+	  },
+	
+	
+	  render: function render() {
+	    var _this3 = this;
+	
+	    return _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        'h1',
+	        null,
+	        'Favorites'
+	      ),
+	      this.state.favorites.map(function (favorite, index) {
+	
+	        var employerPosition = _this3.state.employers.map(function (employer) {
+	          return employer._id;
+	        }).indexOf(favorite.employer);
+	        var employer = _this3.state.employers[employerPosition];
+	
+	        var notes = _this3.state.notes.filter(function (note) {
+	          return note.employer === employer._id;
+	        });
+	
+	        var emailLink = "mailto:" + employer.email;
+	
+	        return _react2.default.createElement(
+	          'div',
+	          { className: 'col-sm-6', key: index },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'card card-block' },
+	            _react2.default.createElement(
+	              'h3',
+	              { className: 'card-title' },
+	              employer.name
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'card-text company' },
+	              employer.company
+	            ),
+	            _react2.default.createElement(
+	              'a',
+	              { href: emailLink, className: 'btn btn-primary' },
+	              'Email'
+	            ),
+	            _react2.default.createElement(
+	              'h5',
+	              null,
+	              'Notes:'
+	            ),
+	            notes.map(function (note) {
+	              return _react2.default.createElement(
+	                'div',
+	                { key: note._id },
+	                _react2.default.createElement(
+	                  'h6',
+	                  null,
+	                  note.note
+	                )
+	              );
+	            }),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'input-group' },
+	              _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'New note', onKeyPress: function onKeyPress(target) {
+	                  if (target.charCode === 13) {
+	                    _this3.addNote(target.currentTarget.value, _this3.state.favorites[index].employer);target.currentTarget.value = "";
+	                  }
+	                } }),
+	              _react2.default.createElement(
+	                'span',
+	                { className: 'input-group-btn' },
+	                _react2.default.createElement(
+	                  'button',
+	                  { className: 'btn btn-secondary', type: 'button', onClick: function onClick(event) {
+	                      _this3.addNote(event.currentTarget.parentElement.previousSibling.value, _this3.state.favorites[index].employer);
+	                      event.currentTarget.parentElement.previousSibling.value = "";
+	                    } },
+	                  'Add'
+	                )
+	              )
+	            )
+	          )
+	        );
+	      })
+	    );
+	  }
+	});
+	
+	module.exports = HomeView;
+
+/***/ },
+/* 233 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _NewRegistration = __webpack_require__(234);
 	
 	var _NewRegistration2 = _interopRequireDefault(_NewRegistration);
 	
-	var _InvalidRegistration = __webpack_require__(233);
+	var _InvalidRegistration = __webpack_require__(235);
 	
 	var _InvalidRegistration2 = _interopRequireDefault(_InvalidRegistration);
 	
@@ -26868,7 +27082,7 @@
 	
 	var _RegisteredBeacon2 = _interopRequireDefault(_RegisteredBeacon);
 	
-	var _Spinner = __webpack_require__(234);
+	var _Spinner = __webpack_require__(231);
 	
 	var _Spinner2 = _interopRequireDefault(_Spinner);
 	
@@ -26911,7 +27125,7 @@
 	module.exports = Register;
 
 /***/ },
-/* 232 */
+/* 234 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26953,6 +27167,7 @@
 	
 	
 	  render: function render() {
+	    var _this2 = this;
 	
 	    return _react2.default.createElement(
 	      "div",
@@ -26986,7 +27201,11 @@
 	          { htmlFor: "password" },
 	          "Password:"
 	        ),
-	        _react2.default.createElement("input", { type: "password", className: "form-control", onChange: this.passwordInputChanged, id: "password", value: this.state.password })
+	        _react2.default.createElement("input", { type: "password", className: "form-control", onChange: this.passwordInputChanged, id: "password", value: this.state.password, onKeyPress: function onKeyPress(t) {
+	            if (t.charCode === 13) {
+	              _this2.registerPressed();
+	            }
+	          } })
 	      ),
 	      _react2.default.createElement(
 	        "button",
@@ -27000,7 +27219,7 @@
 	module.exports = NewRegistration;
 
 /***/ },
-/* 233 */
+/* 235 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27030,64 +27249,6 @@
 	});
 	
 	module.exports = InvalidRegistration;
-
-/***/ },
-/* 234 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var Spinner = _react2.default.createClass({
-	  displayName: "Spinner",
-	
-	
-	  render: function render() {
-	
-	    return _react2.default.createElement(
-	      "div",
-	      { className: "spinnerContainer" },
-	      _react2.default.createElement("span", { className: "glyphicon glyphicon-refresh spinner" })
-	    );
-	  }
-	});
-	
-	module.exports = Spinner;
-
-/***/ },
-/* 235 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var Test = _react2.default.createClass({
-	  displayName: "Test",
-	
-	  render: function render() {
-	    return _react2.default.createElement(
-	      "div",
-	      null,
-	      _react2.default.createElement(
-	        "h1",
-	        null,
-	        "404 Not Found"
-	      )
-	    );
-	  }
-	});
-	
-	module.exports = Test;
 
 /***/ },
 /* 236 */
@@ -27120,6 +27281,36 @@
 	});
 	
 	module.exports = RegisteredBeacon;
+
+/***/ },
+/* 237 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Test = _react2.default.createClass({
+	  displayName: "Test",
+	
+	  render: function render() {
+	    return _react2.default.createElement(
+	      "div",
+	      null,
+	      _react2.default.createElement(
+	        "h1",
+	        null,
+	        "404 Not Found"
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = Test;
 
 /***/ }
 /******/ ]);

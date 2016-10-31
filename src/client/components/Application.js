@@ -4,7 +4,9 @@ import Navbar from "./Navbar";
 import Home from "./Home";
 
 const Application = React.createClass({
+
   render: function() {
+    
     return (
       <div>
         <Navbar />

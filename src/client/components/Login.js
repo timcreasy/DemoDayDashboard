@@ -21,7 +21,7 @@ let Login = React.createClass({
       password: this.state.password
     };
 
-    axios.post('http://104.236.71.66:3000/api/student/login', user)
+    axios.post('http://localhost:3000/api/login', user)
       .then(({data}) =>  {
         if (data.student) {
           this.setState({error: ""});
@@ -44,14 +44,14 @@ let Login = React.createClass({
     return (
       <div>
         <h1>Login</h1>
-        <h1>{this.state.error}</h1>
+        { this.state.error ? <div className="alert alert-danger" role="alert">{this.state.error}</div> : <h1></h1> }
         <div className="form-group">
           <label htmlFor="email">Email:</label>
-          <input type="text" className="form-control" onChange={this.emailInputChanged} id="email" value={this.state.email}/>
+          <input type="text" className="form-control" onChange={this.emailInputChanged} id="email" value={this.state.email} onKeyPress={(t) => {if (t.charCode === 13) { this.loginPressed() }}}/>
         </div>
         <div className="form-group">
           <label htmlFor="password">Password:</label>
-          <input type="password" className="form-control" onChange={this.passwordInputChanged} id="password" value={this.state.password}/>
+          <input type="password" className="form-control" onChange={this.passwordInputChanged} id="password" value={this.state.password} onKeyPress={(t) => {if (t.charCode === 13) { this.loginPressed() }}} />
         </div>
         <button type="button" className="btn btn-primary" onClick={this.loginPressed}>Login</button>
       </div>

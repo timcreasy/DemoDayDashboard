@@ -5,22 +5,29 @@ const HomeView = React.createClass({
   getInitialState() {
     return({
       favorites: [],
-      employers: []
+      employers: [],
+      notes: []
     });
   },
 
   componentWillMount() {
-    this.loadUserLikes(this.props.user.beaconId);
+    this.loadUserData(this.props.user);
   },
 
-  loadUserLikes(beaconId) {
+  loadUserData(user) {
 
     axios.get('http://104.236.71.66:3000/api/users/')
       .then(({data: {users}}) => {
         return this.setState({employers: users});
       })
       .then(() => {
-        return axios.get('http://104.236.71.66:3000/api/beacon/' + beaconId)
+        return axios.get('http://104.236.71.66:3000/api/note/' + user._id)
+      })
+      .then(({data: {notes}}) => {
+        this.setState({notes: notes});
+      })
+      .then(() => {
+        return axios.get('http://104.236.71.66:3000/api/beacon/' + user.beaconId)
       })
       .then(({data: {favorites}}) =>  {
         this.setState({favorites: favorites});
@@ -44,6 +51,10 @@ const HomeView = React.createClass({
                                       .indexOf(favorite.employer);
             let employer = this.state.employers[employerPosition];
 
+            let notes = this.state.notes.filter((note) => {
+              return note.employer === employer._id;
+            });
+
             let emailLink = "mailto:" + employer.email;
 
             return (
@@ -52,6 +63,16 @@ const HomeView = React.createClass({
                   <h3 className="card-title">{employer.name}</h3>
                   <p className="card-text company">{employer.company}</p>
                   <a href={emailLink} className="btn btn-primary">Email</a>
+                  <h5>Notes:</h5>
+                  {
+                    notes.map(note => {
+                      return (
+                        <div key={note._id}>
+                          <h6>{note.note}</h6>
+                        </div>
+                      )
+                    })
+                  }
                 </div>
               </div>
             );

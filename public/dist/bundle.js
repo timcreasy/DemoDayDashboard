@@ -26917,13 +26917,14 @@
 	  getInitialState: function getInitialState() {
 	    return {
 	      favorites: [],
-	      employers: []
+	      employers: [],
+	      notes: []
 	    };
 	  },
 	  componentWillMount: function componentWillMount() {
-	    this.loadUserLikes(this.props.user.beaconId);
+	    this.loadUserData(this.props.user);
 	  },
-	  loadUserLikes: function loadUserLikes(beaconId) {
+	  loadUserData: function loadUserData(user) {
 	    var _this = this;
 	
 	    axios.get('http://104.236.71.66:3000/api/users/').then(function (_ref) {
@@ -26931,9 +26932,15 @@
 	
 	      return _this.setState({ employers: users });
 	    }).then(function () {
-	      return axios.get('http://104.236.71.66:3000/api/beacon/' + beaconId);
+	      return axios.get('http://104.236.71.66:3000/api/note/' + user._id);
 	    }).then(function (_ref2) {
-	      var favorites = _ref2.data.favorites;
+	      var notes = _ref2.data.notes;
+	
+	      _this.setState({ notes: notes });
+	    }).then(function () {
+	      return axios.get('http://104.236.71.66:3000/api/beacon/' + user.beaconId);
+	    }).then(function (_ref3) {
+	      var favorites = _ref3.data.favorites;
 	
 	      _this.setState({ favorites: favorites });
 	    }).catch(console.log);
@@ -26958,6 +26965,10 @@
 	        }).indexOf(favorite.employer);
 	        var employer = _this2.state.employers[employerPosition];
 	
+	        var notes = _this2.state.notes.filter(function (note) {
+	          return note.employer === employer._id;
+	        });
+	
 	        var emailLink = "mailto:" + employer.email;
 	
 	        return _react2.default.createElement(
@@ -26980,7 +26991,23 @@
 	              'a',
 	              { href: emailLink, className: 'btn btn-primary' },
 	              'Email'
-	            )
+	            ),
+	            _react2.default.createElement(
+	              'h5',
+	              null,
+	              'Notes:'
+	            ),
+	            notes.map(function (note) {
+	              return _react2.default.createElement(
+	                'div',
+	                { key: note._id },
+	                _react2.default.createElement(
+	                  'h6',
+	                  null,
+	                  note.note
+	                )
+	              );
+	            })
 	          )
 	        );
 	      })

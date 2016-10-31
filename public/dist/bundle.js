@@ -26973,12 +26973,7 @@
 	            ),
 	            _react2.default.createElement(
 	              'p',
-	              { className: 'card-text' },
-	              _react2.default.createElement(
-	                'strong',
-	                null,
-	                'Company: '
-	              ),
+	              { className: 'card-text company' },
 	              employer.company
 	            ),
 	            _react2.default.createElement(
@@ -26994,12 +26989,6 @@
 	});
 	
 	module.exports = HomeView;
-	
-	// <div className="card card-block" key={index}>
-	//   <h4 className="card-title">{employer.name}</h4>
-	//   <p className="card-text"><strong>Company: </strong>{employer.company}</p>
-	//   <p className="card-text"><strong>Email: </strong>{employer.email}</p>
-	// </div>
 
 /***/ },
 /* 233 */

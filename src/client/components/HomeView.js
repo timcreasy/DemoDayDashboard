@@ -50,7 +50,7 @@ const HomeView = React.createClass({
               <div className="col-sm-6" key={index}>
                 <div className="card card-block">
                   <h3 className="card-title">{employer.name}</h3>
-                  <p className="card-text"><strong>Company: </strong>{employer.company}</p>
+                  <p className="card-text company">{employer.company}</p>
                   <a href={emailLink} className="btn btn-primary">Email</a>
                 </div>
               </div>

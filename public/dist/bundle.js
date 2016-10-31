@@ -26974,11 +26974,11 @@
 	
 	    return _react2.default.createElement(
 	      'div',
-	      null,
+	      { className: 'mainView' },
 	      _react2.default.createElement(
 	        'h1',
 	        null,
-	        'Favorites'
+	        'Connections'
 	      ),
 	      this.state.favorites.map(function (favorite, index) {
 	
@@ -26995,7 +26995,7 @@
 	
 	        return _react2.default.createElement(
 	          'div',
-	          { className: 'col-sm-6', key: index },
+	          { className: 'col-lg-6', key: index },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'card card-block' },
@@ -27005,19 +27005,24 @@
 	              employer.name
 	            ),
 	            _react2.default.createElement(
+	              'a',
+	              { href: emailLink, className: 'btn btn-primary emailButton' },
+	              'Email'
+	            ),
+	            _react2.default.createElement(
 	              'p',
 	              { className: 'card-text company' },
 	              employer.company
 	            ),
+	            _react2.default.createElement('hr', null),
 	            _react2.default.createElement(
-	              'a',
-	              { href: emailLink, className: 'btn btn-primary' },
-	              'Email'
-	            ),
-	            _react2.default.createElement(
-	              'h5',
+	              'h6',
 	              null,
-	              'Notes:'
+	              _react2.default.createElement(
+	                'strong',
+	                null,
+	                'Notes:'
+	              )
 	            ),
 	            notes.map(function (note) {
 	              return _react2.default.createElement(

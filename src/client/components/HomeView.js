@@ -52,8 +52,8 @@ const HomeView = React.createClass({
   render: function() {
   
     return (
-      <div>
-        <h1>Favorites</h1>
+      <div className="mainView">
+        <h1>Connections</h1>
         {
           this.state.favorites.map((favorite, index) => {
 
@@ -71,12 +71,13 @@ const HomeView = React.createClass({
             let emailLink = "mailto:" + employer.email;
 
             return (
-              <div className="col-sm-6" key={index}>
+              <div className="col-lg-6" key={index}>
                 <div className="card card-block">
                   <h3 className="card-title">{employer.name}</h3>
+                  <a href={emailLink} className="btn btn-primary emailButton">Email</a>
                   <p className="card-text company">{employer.company}</p>
-                  <a href={emailLink} className="btn btn-primary">Email</a>
-                  <h5>Notes:</h5>
+                  <hr />
+                  <h6><strong>Notes:</strong></h6>
                   {
                     notes.map(note => {
                       return (

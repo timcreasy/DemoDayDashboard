@@ -26945,10 +26945,23 @@
 	      _this.setState({ favorites: favorites });
 	    }).catch(console.log);
 	  },
+	  addNote: function addNote(event, employer) {
+	    var _this2 = this;
+	
+	    var noteText = event.currentTarget.parentElement.previousSibling.value;
+	    var note = {
+	      note: noteText,
+	      employer: employer,
+	      student: this.props.user._id
+	    };
+	    axios.post('http://104.236.71.66:3000/api/note', note).then(function () {
+	      _this2.loadUserData(_this2.props.user);
+	    }).catch(console.log);
+	  },
 	
 	
 	  render: function render() {
-	    var _this2 = this;
+	    var _this3 = this;
 	
 	    return _react2.default.createElement(
 	      'div',
@@ -26960,12 +26973,12 @@
 	      ),
 	      this.state.favorites.map(function (favorite, index) {
 	
-	        var employerPosition = _this2.state.employers.map(function (employer) {
+	        var employerPosition = _this3.state.employers.map(function (employer) {
 	          return employer._id;
 	        }).indexOf(favorite.employer);
-	        var employer = _this2.state.employers[employerPosition];
+	        var employer = _this3.state.employers[employerPosition];
 	
-	        var notes = _this2.state.notes.filter(function (note) {
+	        var notes = _this3.state.notes.filter(function (note) {
 	          return note.employer === employer._id;
 	        });
 	
@@ -27007,7 +27020,24 @@
 	                  note.note
 	                )
 	              );
-	            })
+	            }),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'input-group' },
+	              _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'New note' }),
+	              _react2.default.createElement(
+	                'span',
+	                { className: 'input-group-btn' },
+	                _react2.default.createElement(
+	                  'button',
+	                  { className: 'btn btn-secondary', type: 'button', onClick: function onClick(event) {
+	                      _this3.addNote(event, _this3.state.favorites[index].employer);
+	                      event.currentTarget.parentElement.previousSibling.value = "";
+	                    } },
+	                  'Add'
+	                )
+	              )
+	            )
 	          )
 	        );
 	      })

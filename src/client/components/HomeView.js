@@ -36,6 +36,20 @@ const HomeView = React.createClass({
 
   },
 
+  addNote(event, employer) {
+    const noteText = event.currentTarget.parentElement.previousSibling.value;
+    const note = {
+      note: noteText,
+      employer: employer,
+      student: this.props.user._id
+    };
+    axios.post('http://104.236.71.66:3000/api/note', note)
+      .then(() => {
+        this.loadUserData(this.props.user);
+      })
+      .catch(console.log);
+  },
+
   render: function() {
   
     return (
@@ -73,6 +87,15 @@ const HomeView = React.createClass({
                       )
                     })
                   }
+                  <div className="input-group">
+                    <input type="text" className="form-control" placeholder="New note" />
+                    <span className="input-group-btn">
+                      <button className="btn btn-secondary" type="button" onClick={(event) => {
+                        this.addNote(event, this.state.favorites[index].employer); 
+                        event.currentTarget.parentElement.previousSibling.value = "";
+                      }}>Add</button>
+                    </span>
+                  </div>
                 </div>
               </div>
             );

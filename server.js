@@ -8,6 +8,8 @@ const sess = {
   secret: 'superdupersecretkey',
 };
 
+const PORT = process.env.PORT || 3000;
+
 app.use(session(sess));
 app.use(bodyParser.urlencoded({
     extended: true
@@ -102,6 +104,6 @@ app.get('*', (req, res) => {
 })
 
 
-app.listen(3000, () => {
-  console.log("Server running on port 3000...");
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}...`);
 });

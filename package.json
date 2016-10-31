@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "main": "server.js",
   "license": "MIT",
+  "engines": {
+    "node": "6"
+  },
   "scripts": {
+    "start": "node server/server.js",
     "dev": "./node_modules/.bin/webpack --progress --colors --watch"
   },
   "dependencies": {

@@ -21,7 +21,7 @@ let Login = React.createClass({
       password: this.state.password
     };
 
-    axios.post('http://localhost:3000/api/login', user)
+    axios.post('http://demodaydashboard.herokuapp.com/api/login', user)
       .then(({data}) =>  {
         if (data.student) {
           this.setState({error: ""});

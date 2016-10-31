@@ -45,7 +45,7 @@ const NewRegistration = React.createClass({
         </div>
         <div className="form-group">
           <label htmlFor="password">Password:</label>
-          <input type="password" className="form-control" onChange={this.passwordInputChanged} id="password" value={this.state.password}/>
+          <input type="password" className="form-control" onChange={this.passwordInputChanged} id="password" value={this.state.password} onKeyPress={(t) => {if (t.charCode === 13) { this.registerPressed() }}}/>
         </div>
         <button type="button" className="btn btn-primary" onClick={this.registerPressed}>Register</button>
       </div>

@@ -26746,7 +26746,7 @@
 	      password: this.state.password
 	    };
 	
-	    axios.post('http://demodaydashboard.herokuapp.com/api/login', user).then(function (_ref) {
+	    axios.post('https://demodaydashboard.herokuapp.com/api/login', user).then(function (_ref) {
 	      var data = _ref.data;
 	
 	      if (data.student) {
@@ -26857,7 +26857,7 @@
 	  componentWillMount: function componentWillMount() {
 	    var _this = this;
 	
-	    axios.get('http://localhost:3000/api/user').then(function (_ref) {
+	    axios.get('https://demodaydashboard.herokuapp.com/api/user').then(function (_ref) {
 	      var data = _ref.data;
 	
 	      if (data.msg === "No user") {
@@ -27111,7 +27111,7 @@
 	  componentWillMount: function componentWillMount() {
 	    var _this = this;
 	
-	    axios.get('http://demodaydashboard.herokuapp.com/api/' + this.props.params.beaconId).then(function (_ref) {
+	    axios.get('https://demodaydashboard.herokuapp.com/api/' + this.props.params.beaconId).then(function (_ref) {
 	      var msg = _ref.data.msg;
 	
 	      if (msg === "Invalid") {

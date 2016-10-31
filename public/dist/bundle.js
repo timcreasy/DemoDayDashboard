@@ -26769,7 +26769,7 @@
 	
 	    return _react2.default.createElement(
 	      "div",
-	      null,
+	      { className: "mainView" },
 	      _react2.default.createElement(
 	        "h1",
 	        null,
@@ -26809,9 +26809,13 @@
 	          } })
 	      ),
 	      _react2.default.createElement(
-	        "button",
-	        { type: "button", className: "btn btn-primary", onClick: this.loginPressed },
-	        "Login"
+	        "div",
+	        { className: "center" },
+	        _react2.default.createElement(
+	          "button",
+	          { type: "button", className: "btn btn-primary", onClick: this.loginPressed },
+	          "Login"
+	        )
 	      )
 	    );
 	  }
@@ -27175,17 +27179,21 @@
 	
 	    return _react2.default.createElement(
 	      "div",
-	      null,
+	      { className: "mainView" },
 	      _react2.default.createElement(
 	        "h1",
 	        null,
 	        "Register"
 	      ),
 	      _react2.default.createElement(
-	        "h3",
-	        null,
-	        "Beacon: ",
-	        this.props.beacon
+	        "div",
+	        { className: "form-group" },
+	        _react2.default.createElement(
+	          "label",
+	          { htmlFor: "beacon" },
+	          "Beacon ID:"
+	        ),
+	        _react2.default.createElement("input", { type: "text", className: "form-control", id: "beacon", value: this.props.beacon, disabled: true })
 	      ),
 	      _react2.default.createElement(
 	        "div",
@@ -27212,9 +27220,13 @@
 	          } })
 	      ),
 	      _react2.default.createElement(
-	        "button",
-	        { type: "button", className: "btn btn-primary", onClick: this.registerPressed },
-	        "Register"
+	        "div",
+	        { className: "center" },
+	        _react2.default.createElement(
+	          "button",
+	          { type: "button", className: "btn btn-primary", onClick: this.registerPressed },
+	          "Register"
+	        )
 	      )
 	    );
 	  }
@@ -27242,11 +27254,20 @@
 	
 	    return _react2.default.createElement(
 	      "div",
-	      null,
+	      { className: "mainView" },
 	      _react2.default.createElement(
 	        "h1",
 	        null,
 	        "Invalid beacon"
+	      ),
+	      _react2.default.createElement(
+	        "div",
+	        { className: "center" },
+	        _react2.default.createElement(
+	          "a",
+	          { href: "mailto:tim@timcreasy.com", className: "btn btn-primary" },
+	          "Contact Webmaster"
+	        )
 	      )
 	    );
 	  }
@@ -27274,11 +27295,20 @@
 	
 	    return _react2.default.createElement(
 	      "div",
-	      null,
+	      { className: "mainView" },
 	      _react2.default.createElement(
 	        "h1",
 	        null,
 	        "Beacon already registered!"
+	      ),
+	      _react2.default.createElement(
+	        "div",
+	        { className: "center" },
+	        _react2.default.createElement(
+	          "a",
+	          { href: "/login", className: "btn btn-primary" },
+	          "Login"
+	        )
 	      )
 	    );
 	  }

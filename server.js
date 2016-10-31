@@ -75,8 +75,19 @@ app.get('/api/:beaconId', (req, res) => {
 
   if (beaconValid) {
 
+    // axios
+    //   .get('http://104.236.71.66:3000/api/students/' + req.params.beaconId)
+    //   .then(({data: {student}}) => {
+    //     if (student.length > 0) {
+    //       res.json({msg: "Registered"});
+    //     } else {
+    //       res.json({msg: "Valid"});
+    //     }
+    //   })
+    //   .catch(console.log);
+
     axios
-      .get('http://104.236.71.66:3000/api/students/' + req.params.beaconId)
+      .post('http://104.236.71.66:3000/api/students/beacon', {beaconId: req.params.beaconId})
       .then(({data: {student}}) => {
         if (student.length > 0) {
           res.json({msg: "Registered"});

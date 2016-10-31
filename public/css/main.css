@@ -53,3 +53,9 @@
         transform: rotate(359deg);
     }
 }
+
+@media (min-width: 992px) {
+    .col-lg-6:nth-child(odd) {
+        clear: both;
+    }
+}

@@ -26983,85 +26983,89 @@
 	        null,
 	        'Connections'
 	      ),
-	      this.state.favorites.map(function (favorite, index) {
+	      _react2.default.createElement(
+	        'div',
+	        { id: 'cardContainer' },
+	        this.state.favorites.map(function (favorite, index) {
 	
-	        var employerPosition = _this3.state.employers.map(function (employer) {
-	          return employer._id;
-	        }).indexOf(favorite.employer);
-	        var employer = _this3.state.employers[employerPosition];
+	          var employerPosition = _this3.state.employers.map(function (employer) {
+	            return employer._id;
+	          }).indexOf(favorite.employer);
+	          var employer = _this3.state.employers[employerPosition];
 	
-	        var notes = _this3.state.notes.filter(function (note) {
-	          return note.employer === employer._id;
-	        });
+	          var notes = _this3.state.notes.filter(function (note) {
+	            return note.employer === employer._id;
+	          });
 	
-	        var emailLink = "mailto:" + employer.email;
+	          var emailLink = "mailto:" + employer.email;
 	
-	        return _react2.default.createElement(
-	          'div',
-	          { className: 'col-lg-6', key: index },
-	          _react2.default.createElement(
+	          return _react2.default.createElement(
 	            'div',
-	            { className: 'card card-block' },
-	            _react2.default.createElement(
-	              'h3',
-	              { className: 'card-title' },
-	              employer.name
-	            ),
-	            _react2.default.createElement(
-	              'a',
-	              { href: emailLink, className: 'btn btn-primary emailButton' },
-	              'Email'
-	            ),
-	            _react2.default.createElement(
-	              'p',
-	              { className: 'card-text company' },
-	              employer.company
-	            ),
-	            _react2.default.createElement('hr', null),
-	            _react2.default.createElement(
-	              'h6',
-	              null,
-	              _react2.default.createElement(
-	                'strong',
-	                null,
-	                'Notes:'
-	              )
-	            ),
-	            notes.map(function (note) {
-	              return _react2.default.createElement(
-	                'div',
-	                { key: note._id },
-	                _react2.default.createElement(
-	                  'h6',
-	                  null,
-	                  note.note
-	                )
-	              );
-	            }),
+	            { className: 'col-lg-6', key: index },
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'input-group' },
-	              _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'New note', onKeyPress: function onKeyPress(target) {
-	                  if (target.charCode === 13) {
-	                    _this3.addNote(target.currentTarget.value, _this3.state.favorites[index].employer);target.currentTarget.value = "";
-	                  }
-	                } }),
+	              { className: 'card card-block' },
 	              _react2.default.createElement(
-	                'span',
-	                { className: 'input-group-btn' },
+	                'h3',
+	                { className: 'card-title' },
+	                employer.name
+	              ),
+	              _react2.default.createElement(
+	                'a',
+	                { href: emailLink, className: 'btn btn-primary emailButton' },
+	                'Email'
+	              ),
+	              _react2.default.createElement(
+	                'p',
+	                { className: 'card-text company' },
+	                employer.company
+	              ),
+	              _react2.default.createElement('hr', null),
+	              _react2.default.createElement(
+	                'h6',
+	                null,
 	                _react2.default.createElement(
-	                  'button',
-	                  { className: 'btn btn-secondary', type: 'button', onClick: function onClick(event) {
-	                      _this3.addNote(event.currentTarget.parentElement.previousSibling.value, _this3.state.favorites[index].employer);
-	                      event.currentTarget.parentElement.previousSibling.value = "";
-	                    } },
-	                  'Add'
+	                  'strong',
+	                  null,
+	                  'Notes:'
+	                )
+	              ),
+	              notes.map(function (note) {
+	                return _react2.default.createElement(
+	                  'div',
+	                  { key: note._id },
+	                  _react2.default.createElement(
+	                    'h6',
+	                    null,
+	                    note.note
+	                  )
+	                );
+	              }),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'input-group' },
+	                _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'New note', onKeyPress: function onKeyPress(target) {
+	                    if (target.charCode === 13) {
+	                      _this3.addNote(target.currentTarget.value, _this3.state.favorites[index].employer);target.currentTarget.value = "";
+	                    }
+	                  } }),
+	                _react2.default.createElement(
+	                  'span',
+	                  { className: 'input-group-btn' },
+	                  _react2.default.createElement(
+	                    'button',
+	                    { className: 'btn btn-secondary', type: 'button', onClick: function onClick(event) {
+	                        _this3.addNote(event.currentTarget.parentElement.previousSibling.value, _this3.state.favorites[index].employer);
+	                        event.currentTarget.parentElement.previousSibling.value = "";
+	                      } },
+	                    'Add'
+	                  )
 	                )
 	              )
 	            )
-	          )
-	        );
-	      })
+	          );
+	        })
+	      )
 	    );
 	  }
 	});

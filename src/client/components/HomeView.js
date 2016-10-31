@@ -54,6 +54,7 @@ const HomeView = React.createClass({
     return (
       <div className="mainView">
         <h1>Connections</h1>
+        <div id="cardContainer">
         {
           this.state.favorites.map((favorite, index) => {
 
@@ -101,6 +102,7 @@ const HomeView = React.createClass({
             );
           })
         }
+        </div>
       </div>
     );
   }

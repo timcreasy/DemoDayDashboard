@@ -36,9 +36,12 @@ const NewRegistration = React.createClass({
   render: function() {
 
     return (
-      <div>
+      <div className="mainView">
         <h1>Register</h1>
-        <h3>Beacon: {this.props.beacon}</h3>
+        <div className="form-group">
+          <label htmlFor="beacon">Beacon ID:</label>
+          <input type="text" className="form-control" id="beacon" value={this.props.beacon} disabled/>
+        </div>
         <div className="form-group">
           <label htmlFor="email">Email:</label>
           <input type="text" className="form-control" onChange={this.emailInputChanged} id="email" value={this.state.email}/>
@@ -47,7 +50,9 @@ const NewRegistration = React.createClass({
           <label htmlFor="password">Password:</label>
           <input type="password" className="form-control" onChange={this.passwordInputChanged} id="password" value={this.state.password} onKeyPress={(t) => {if (t.charCode === 13) { this.registerPressed() }}}/>
         </div>
-        <button type="button" className="btn btn-primary" onClick={this.registerPressed}>Register</button>
+        <div className="center">
+          <button type="button" className="btn btn-primary" onClick={this.registerPressed}>Register</button>
+        </div>
       </div>
     );
   }

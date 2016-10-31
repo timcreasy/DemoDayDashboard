@@ -21,7 +21,7 @@ let Login = React.createClass({
       password: this.state.password
     };
 
-    axios.post('http://localhost:3000/api/login', user)
+    axios.post('http://demodaydashboard.herokuapp.com/api/login', user)
       .then(({data}) =>  {
         if (data.student) {
           this.setState({error: ""});
@@ -42,7 +42,7 @@ let Login = React.createClass({
 
   render: function() {
     return (
-      <div>
+      <div className="mainView">
         <h1>Login</h1>
         { this.state.error ? <div className="alert alert-danger" role="alert">{this.state.error}</div> : <h1></h1> }
         <div className="form-group">
@@ -53,7 +53,9 @@ let Login = React.createClass({
           <label htmlFor="password">Password:</label>
           <input type="password" className="form-control" onChange={this.passwordInputChanged} id="password" value={this.state.password} onKeyPress={(t) => {if (t.charCode === 13) { this.loginPressed() }}} />
         </div>
-        <button type="button" className="btn btn-primary" onClick={this.loginPressed}>Login</button>
+        <div className="center">
+          <button type="button" className="btn btn-primary" onClick={this.loginPressed}>Login</button>
+        </div>
       </div>
     );
   }

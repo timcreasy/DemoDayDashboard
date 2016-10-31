@@ -9,7 +9,6 @@ const Application = React.createClass({
     
     return (
       <div>
-        <Navbar />
         <div className="container">
           {this.props.children}
         </div>

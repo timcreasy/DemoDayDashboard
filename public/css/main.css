@@ -16,6 +16,23 @@
     color: #737576;
 }
 
+.mainView h1 {
+    text-align: center;
+    margin: 0.7em;
+}
+
+.card-title {
+    display: inline-block;
+}
+
+.emailButton {
+    float: right;
+}
+
+.center {
+    text-align: center;
+}
+
 @-webkit-keyframes spin {
     0% {
         -webkit-transform: rotate(0deg);
@@ -34,5 +51,11 @@
     100% {
         -webkit-transform: rotate(359deg);
         transform: rotate(359deg);
+    }
+}
+
+@media (min-width: 992px) {
+    .col-lg-6:nth-child(odd) {
+        clear: both;
     }
 }

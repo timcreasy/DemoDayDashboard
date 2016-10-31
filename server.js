@@ -9,21 +9,7 @@ const sess = {
 };
 
 const PORT = process.env.PORT || 3000;
-const allowCrossDomain = (req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
 
-    // intercept OPTIONS method
-    if ('OPTIONS' == req.method) {
-      res.send(200);
-    }
-    else {
-      next();
-    }
-};
-
-app.use(allowCrossDomain);
 app.use(session(sess));
 app.use(bodyParser.urlencoded({
     extended: true
@@ -75,19 +61,8 @@ app.get('/api/:beaconId', (req, res) => {
 
   if (beaconValid) {
 
-    // axios
-    //   .get('http://104.236.71.66:3000/api/students/' + req.params.beaconId)
-    //   .then(({data: {student}}) => {
-    //     if (student.length > 0) {
-    //       res.json({msg: "Registered"});
-    //     } else {
-    //       res.json({msg: "Valid"});
-    //     }
-    //   })
-    //   .catch(console.log);
-
     axios
-      .post('http://104.236.71.66:3000/api/students/beacon', {beaconId: req.params.beaconId})
+      .get('http://104.236.71.66:3000/api/students/' + req.params.beaconId)
       .then(({data: {student}}) => {
         if (student.length > 0) {
           res.json({msg: "Registered"});
@@ -96,6 +71,17 @@ app.get('/api/:beaconId', (req, res) => {
         }
       })
       .catch(console.log);
+
+    // axios
+    //   .post('http://104.236.71.66:3000/api/students/beacon', {beaconId: req.params.beaconId})
+    //   .then(({data: {student}}) => {
+    //     if (student.length > 0) {
+    //       res.json({msg: "Registered"});
+    //     } else {
+    //       res.json({msg: "Valid"});
+    //     }
+    //   })
+    //   .catch(console.log);
 
   } else {
     res.json({msg: "Invalid"});
@@ -113,6 +99,7 @@ app.post('/api/login', (req, res) => {
       })
       .then(response => {
         if (response.data.student) {
+          console.log("dug");
           req.session.user = response.data.student;
         }
         res.json(response.data);

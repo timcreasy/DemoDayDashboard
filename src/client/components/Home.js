@@ -14,7 +14,7 @@ const Home = React.createClass({
   },
 
   componentWillMount() {
-    axios.get('https://demodaydashboard.herokuapp.com/api/user')
+    axios.get('http://demodaydashboard.herokuapp.com/api/user')
       .then(({data}) => {
         if (data.msg === "No user") {
           browserHistory.push('/login');

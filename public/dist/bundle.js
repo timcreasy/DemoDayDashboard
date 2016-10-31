@@ -26945,10 +26945,9 @@
 	      _this.setState({ favorites: favorites });
 	    }).catch(console.log);
 	  },
-	  addNote: function addNote(event, employer) {
+	  addNote: function addNote(noteText, employer) {
 	    var _this2 = this;
 	
-	    var noteText = event.currentTarget.parentElement.previousSibling.value;
 	    var note = {
 	      note: noteText,
 	      employer: employer,
@@ -27024,14 +27023,18 @@
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'input-group' },
-	              _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'New note' }),
+	              _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'New note', onKeyPress: function onKeyPress(target) {
+	                  if (target.charCode === 13) {
+	                    _this3.addNote(target.currentTarget.value, _this3.state.favorites[index].employer);target.currentTarget.value = "";
+	                  }
+	                } }),
 	              _react2.default.createElement(
 	                'span',
 	                { className: 'input-group-btn' },
 	                _react2.default.createElement(
 	                  'button',
 	                  { className: 'btn btn-secondary', type: 'button', onClick: function onClick(event) {
-	                      _this3.addNote(event, _this3.state.favorites[index].employer);
+	                      _this3.addNote(event.currentTarget.parentElement.previousSibling.value, _this3.state.favorites[index].employer);
 	                      event.currentTarget.parentElement.previousSibling.value = "";
 	                    } },
 	                  'Add'

@@ -36,8 +36,7 @@ const HomeView = React.createClass({
 
   },
 
-  addNote(event, employer) {
-    const noteText = event.currentTarget.parentElement.previousSibling.value;
+  addNote(noteText, employer) {
     const note = {
       note: noteText,
       employer: employer,
@@ -88,10 +87,10 @@ const HomeView = React.createClass({
                     })
                   }
                   <div className="input-group">
-                    <input type="text" className="form-control" placeholder="New note" />
+                    <input type="text" className="form-control" placeholder="New note" onKeyPress={(target) => {if (target.charCode === 13) { this.addNote(target.currentTarget.value, this.state.favorites[index].employer); target.currentTarget.value = ""; }}}/>
                     <span className="input-group-btn">
                       <button className="btn btn-secondary" type="button" onClick={(event) => {
-                        this.addNote(event, this.state.favorites[index].employer); 
+                        this.addNote(event.currentTarget.parentElement.previousSibling.value, this.state.favorites[index].employer); 
                         event.currentTarget.parentElement.previousSibling.value = "";
                       }}>Add</button>
                     </span>

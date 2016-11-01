@@ -11,7 +11,15 @@ const HomeView = React.createClass({
   },
 
   componentWillMount() {
+    this.loadUserData(this.props.user)
+    this.updateData();
+  },
+
+  updateData() {
     this.loadUserData(this.props.user);
+    setTimeout(() => {
+      this.updateData();
+    }, 15000);
   },
 
   loadUserData(user) {

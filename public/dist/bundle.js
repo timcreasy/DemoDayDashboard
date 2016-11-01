@@ -26941,8 +26941,6 @@
 	    var _this = this;
 	
 	    axios.post('https://demodaydashboard.herokuapp.com/api/user', { userId: user._id, beaconId: user.beaconId }).then(function (response) {
-	      console.log(response);
-	      console.log(response.data);
 	      _this.setState({
 	        favorites: response.data.favorites,
 	        employers: response.data.employers,

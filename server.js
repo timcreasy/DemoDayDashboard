@@ -64,6 +64,7 @@ app.get('/api/:beaconId', (req, res) => {
     axios
       .get('http://104.236.71.66:3000/api/students/' + req.params.beaconId)
       .then(({data: {student}}) => {
+
         if (student.length > 0) {
           res.json({msg: "Registered"});
         } else {

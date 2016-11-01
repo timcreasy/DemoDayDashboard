@@ -27106,7 +27106,7 @@
 	  componentWillMount: function componentWillMount() {
 	    var _this = this;
 	
-	    axios.get('https://demodaydashboard.herokuapp.com//api/' + this.props.params.beaconId).then(function (_ref) {
+	    axios.get('https://demodaydashboard.herokuapp.com/api/' + this.props.params.beaconId).then(function (_ref) {
 	      var msg = _ref.data.msg;
 	
 	      if (msg === "Invalid") {

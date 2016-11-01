@@ -21,9 +21,8 @@ const NewRegistration = React.createClass({
       password: this.state.password
     };
 
-    axios.post('http://104.236.71.66:3000/api/students', user)
+    axios.post('https://demodaydashboard.herokuapp.com/api/students', user)
       .then(response =>  {
-        console.log(response);
         this.clearForm();
       })
       .catch(console.log);

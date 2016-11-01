@@ -124,6 +124,23 @@ app.post('/api/user', (req, res) => {
 
 });
 
+
+app.post('/api/students', (req, res) => {
+
+    const userToCreate = {
+      beaconId: req.body.beacon,
+      email: req.body.email,
+      password: req.body.password
+    };
+
+    axios.post('http://104.236.71.66:3000/api/students', userToCreate)
+      .then(response =>  {
+        res.sendStatus(201);
+      })
+      .catch(console.log);
+})
+
+
 app.post('/api/note', (req, res) => {
 
   const noteToPost = {

@@ -27136,6 +27136,8 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _reactRouter = __webpack_require__(172);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var NewRegistration = _react2.default.createClass({
@@ -27158,9 +27160,10 @@
 	      password: this.state.password
 	    };
 	
-	    axios.post('http://104.236.71.66:3000/api/students', user).then(function (response) {
-	      console.log(response);
+	    axios.post('https://demodaydashboard.herokuapp.com/api/students', user).then(function (response) {
 	      _this.clearForm();
+	      alert("Account successfully created!");
+	      _reactRouter.browserHistory.push('/login');
 	    }).catch(console.log);
 	  },
 	  clearForm: function clearForm() {

@@ -16,43 +16,14 @@ const HomeView = React.createClass({
 
   loadUserData(user) {
 
-    // axios.get('http://104.236.71.66:3000/api/users/')
-    //   .then(({data: {users}}) => {
-    //     return this.setState({employers: users});
-    //   })
-    //   .then(() => {
-    //     return axios.get('http://104.236.71.66:3000/api/note/' + user._id)
-    //   })
-    //   .then(({data: {notes}}) => {
-    //     this.setState({notes: notes});
-    //   })
-    //   .then(() => {
-    //     return axios.get('http://104.236.71.66:3000/api/beacon/' + user.beaconId)
-    //   })
-    //   .then(({data: {favorites}}) =>  {
-    //     this.setState({favorites: favorites});
-    //   })
-    //   .catch(console.log);
-
-
-
-    axios.post('http://104.236.71.66:3000/api/users/', {})
-      .then(({data: {users}}) => {
-        return this.setState({employers: users});
+    axios.post('https://demodaydashboard.herokuapp.com/api/user', {userId: user._id, beaconId: user.beaconId})
+      .then(({response: {data}}) => {
+        this.setState({
+          favorites: data.favorites,
+          employers: data.employers,
+          notes: data.notes
+        });
       })
-      .then(() => {
-        return axios.post('http://104.236.71.66:3000/api/note', {studentId: user._id})
-      })
-      .then(({data: {notes}}) => {
-        this.setState({notes: notes});
-      })
-      .then(() => {
-        return axios.post('http://104.236.71.66:3000/api/beacon', {beaconId: user.beaconId})
-      })
-      .then(({data: {favorites}}) =>  {
-        this.setState({favorites: favorites});
-      })
-      .catch(console.log);
 
   },
 

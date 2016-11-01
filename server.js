@@ -72,17 +72,6 @@ app.get('/api/:beaconId', (req, res) => {
       })
       .catch(console.log);
 
-    // axios
-    //   .post('http://104.236.71.66:3000/api/students/beacon', {beaconId: req.params.beaconId})
-    //   .then(({data: {student}}) => {
-    //     if (student.length > 0) {
-    //       res.json({msg: "Registered"});
-    //     } else {
-    //       res.json({msg: "Valid"});
-    //     }
-    //   })
-    //   .catch(console.log);
-
   } else {
     res.json({msg: "Invalid"});
   }
@@ -106,6 +95,32 @@ app.post('/api/login', (req, res) => {
       })
       .catch(console.log);
 
+
+});
+
+
+app.post('/api/user', (req, res) => {
+
+    let userData = {}
+
+    axios.get('http://104.236.71.66:3000/api/users/')
+      .then(({data: {users}}) => {
+        return userData.employers = users;
+      })
+      .then(() => {
+        return axios.get('http://104.236.71.66:3000/api/note/' + req.body.userId)
+      })
+      .then(({data: {notes}}) => {
+        userData.notes = notes;
+      })
+      .then(() => {
+        return axios.get('http://104.236.71.66:3000/api/beacon/' + req.body.beaconId)
+      })
+      .then(({data: {favorites}}) =>  {
+        userData.favorites = favorites;
+        res.json(userData);
+      })
+      .catch(console.log);
 
 });
 

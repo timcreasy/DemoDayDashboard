@@ -26940,23 +26940,15 @@
 	  loadUserData: function loadUserData(user) {
 	    var _this = this;
 	
-	    axios.get('http://104.236.71.66:3000/api/users/').then(function (_ref) {
-	      var users = _ref.data.users;
+	    axios.post('https://demodaydashboard.herokuapp.com/api/user', { userId: user._id, beaconId: user.beaconId }).then(function (_ref) {
+	      var data = _ref.response.data;
 	
-	      return _this.setState({ employers: users });
-	    }).then(function () {
-	      return axios.get('http://104.236.71.66:3000/api/note/' + user._id);
-	    }).then(function (_ref2) {
-	      var notes = _ref2.data.notes;
-	
-	      _this.setState({ notes: notes });
-	    }).then(function () {
-	      return axios.get('http://104.236.71.66:3000/api/beacon/' + user.beaconId);
-	    }).then(function (_ref3) {
-	      var favorites = _ref3.data.favorites;
-	
-	      _this.setState({ favorites: favorites });
-	    }).catch(console.log);
+	      _this.setState({
+	        favorites: data.favorites,
+	        employers: data.employers,
+	        notes: data.notes
+	      });
+	    });
 	  },
 	  addNote: function addNote(noteText, employer) {
 	    var _this2 = this;
@@ -26966,7 +26958,7 @@
 	      employer: employer,
 	      student: this.props.user._id
 	    };
-	    axios.post('http://104.236.71.66:3000/api/note', note).then(function () {
+	    axios.post('http://104.236.71.66:3000/api/new/note', note).then(function () {
 	      _this2.loadUserData(_this2.props.user);
 	    }).catch(console.log);
 	  },

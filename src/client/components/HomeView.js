@@ -17,11 +17,13 @@ const HomeView = React.createClass({
   loadUserData(user) {
 
     axios.post('https://demodaydashboard.herokuapp.com/api/user', {userId: user._id, beaconId: user.beaconId})
-      .then(({response: {data}}) => {
+      .then(response => {
+        console.log(response);
+        console.log(response.data);
         this.setState({
-          favorites: data.favorites,
-          employers: data.employers,
-          notes: data.notes
+          favorites: response.data.favorites,
+          employers: response.data.employers,
+          notes: response.data.notes
         });
       })
 
@@ -33,7 +35,7 @@ const HomeView = React.createClass({
       employer: employer,
       student: this.props.user._id
     };
-    axios.post('http://104.236.71.66:3000/api/new/note', note)
+    axios.post('https://demodaydashboard.herokuapp.com/api/note', note)
       .then(() => {
         this.loadUserData(this.props.user);
       })

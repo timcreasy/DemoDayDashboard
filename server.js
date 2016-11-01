@@ -124,6 +124,22 @@ app.post('/api/user', (req, res) => {
 
 });
 
+app.post('/api/note', (req, res) => {
+
+  const noteToPost = {
+    note: req.body.note,
+    employer: req.body.employer,
+    student: req.body.student
+  };
+
+  axios.post('http://104.236.71.66:3000/api/new/note', noteToPost)
+    .then(() => {
+      res.sendStatus(200);
+    })
+    .catch(console.log);
+
+});
+
 
 
 app.get('*', (req, res) => {

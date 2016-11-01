@@ -26940,13 +26940,13 @@
 	  loadUserData: function loadUserData(user) {
 	    var _this = this;
 	
-	    axios.post('https://demodaydashboard.herokuapp.com/api/user', { userId: user._id, beaconId: user.beaconId }).then(function (_ref) {
-	      var data = _ref.response.data;
-	
+	    axios.post('https://demodaydashboard.herokuapp.com/api/user', { userId: user._id, beaconId: user.beaconId }).then(function (response) {
+	      console.log(response);
+	      console.log(response.data);
 	      _this.setState({
-	        favorites: data.favorites,
-	        employers: data.employers,
-	        notes: data.notes
+	        favorites: response.data.favorites,
+	        employers: response.data.employers,
+	        notes: response.data.notes
 	      });
 	    });
 	  },
@@ -26958,7 +26958,7 @@
 	      employer: employer,
 	      student: this.props.user._id
 	    };
-	    axios.post('http://104.236.71.66:3000/api/new/note', note).then(function () {
+	    axios.post('https://demodaydashboard.herokuapp.com/api/note', note).then(function () {
 	      _this2.loadUserData(_this2.props.user);
 	    }).catch(console.log);
 	  },

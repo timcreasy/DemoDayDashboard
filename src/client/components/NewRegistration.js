@@ -1,4 +1,5 @@
 import React from "react";
+import { browserHistory, Link } from 'react-router';
 
 const NewRegistration = React.createClass({
 
@@ -24,6 +25,8 @@ const NewRegistration = React.createClass({
     axios.post('https://demodaydashboard.herokuapp.com/api/students', user)
       .then(response =>  {
         this.clearForm();
+        alert("Account successfully created!");
+        browserHistory.push('/login');
       })
       .catch(console.log);
   },

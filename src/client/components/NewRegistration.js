@@ -16,6 +16,7 @@ const NewRegistration = React.createClass({
   },
 
   registerPressed() {
+
     const user = {
       beaconId: this.props.beacon,
       email: this.state.email,

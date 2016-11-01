@@ -130,7 +130,7 @@ app.post('/api/user', (req, res) => {
 app.post('/api/students', (req, res) => {
 
     const userToCreate = {
-      beaconId: req.body.beacon,
+      beaconId: req.body.beaconId,
       email: req.body.email,
       password: req.body.password
     };

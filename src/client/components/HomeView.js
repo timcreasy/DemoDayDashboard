@@ -21,7 +21,7 @@ const HomeView = React.createClass({
       beaconId: user.beaconId
     };
 
-    axios.post('https://demodaydashboard.herokuapp.com/api/user')
+    axios.post('https://demodaydashboard.herokuapp.com/api/user', postObj)
       .then(response => {
         this.setState({
           favorites: response.data.favorites,

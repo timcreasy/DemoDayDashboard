@@ -14,7 +14,7 @@ const Register = React.createClass({
   },
 
   componentWillMount() {
-    axios.get('https://demodaydashboard.herokuapp.com/api/' + this.props.params.beaconId)
+    axios.get('https://demodaydashboard.herokuapp.com//api/' + this.props.params.beaconId)
       .then(({data: {msg}}) => {
         if (msg === "Invalid") {
           this.setState({registerComponent: <InvalidRegistration />})

@@ -26945,7 +26945,7 @@
 	      beaconId: user.beaconId
 	    };
 	
-	    axios.post('https://demodaydashboard.herokuapp.com/api/user').then(function (response) {
+	    axios.post('https://demodaydashboard.herokuapp.com/api/user', postObj).then(function (response) {
 	      _this.setState({
 	        favorites: response.data.favorites,
 	        employers: response.data.employers,
@@ -27106,7 +27106,7 @@
 	  componentWillMount: function componentWillMount() {
 	    var _this = this;
 	
-	    axios.get('https://demodaydashboard.herokuapp.com/api/' + this.props.params.beaconId).then(function (_ref) {
+	    axios.get('https://demodaydashboard.herokuapp.com//api/' + this.props.params.beaconId).then(function (_ref) {
 	      var msg = _ref.data.msg;
 	
 	      if (msg === "Invalid") {

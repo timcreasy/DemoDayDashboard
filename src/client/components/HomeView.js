@@ -12,22 +12,14 @@ const HomeView = React.createClass({
 
   componentWillMount() {
     this.loadUserData(this.props.user);
-    setTimeout(() => {
-      this.fetchData();
-    }, 15000);
-  },
-
-  fetchData() {
-    this.loadUserData(this.props.user);
-    setTimeout(() => {
-      this.fetchData();
-    }, 15000);
   },
 
   loadUserData(user) {
 
     axios.post('https://demodaydashboard.herokuapp.com/api/user', {userId: user._id, beaconId: user.beaconId})
       .then(response => {
+        console.log(response);
+        console.log(response.data);
         this.setState({
           favorites: response.data.favorites,
           employers: response.data.employers,

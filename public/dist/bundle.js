@@ -26917,7 +26917,7 @@
 /* 232 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	var _react = __webpack_require__(1);
 	
@@ -26926,7 +26926,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var HomeView = _react2.default.createClass({
-	  displayName: "HomeView",
+	  displayName: 'HomeView',
 	  getInitialState: function getInitialState() {
 	    return {
 	      favorites: [],
@@ -26948,7 +26948,6 @@
 	    this.loadUserData(this.props.user);
 	    setTimeout(function () {
 	      _this2.fetchData();
-	      console.log("2 seconds passd");
 	    }, 15000);
 	  },
 	  loadUserData: function loadUserData(user) {
@@ -26980,16 +26979,16 @@
 	    var _this5 = this;
 	
 	    return _react2.default.createElement(
-	      "div",
-	      { className: "mainView" },
+	      'div',
+	      { className: 'mainView' },
 	      _react2.default.createElement(
-	        "h1",
+	        'h1',
 	        null,
-	        "Connections"
+	        'Connections'
 	      ),
 	      _react2.default.createElement(
-	        "div",
-	        { id: "cardContainer" },
+	        'div',
+	        { id: 'cardContainer' },
 	        this.state.favorites.map(function (favorite, index) {
 	
 	          var employerPosition = _this5.state.employers.map(function (employer) {
@@ -27004,65 +27003,65 @@
 	          var emailLink = "mailto:" + employer.email;
 	
 	          return _react2.default.createElement(
-	            "div",
-	            { className: "col-lg-6", key: index },
+	            'div',
+	            { className: 'col-lg-6', key: index },
 	            _react2.default.createElement(
-	              "div",
-	              { className: "card card-block" },
+	              'div',
+	              { className: 'card card-block' },
 	              _react2.default.createElement(
-	                "h3",
-	                { className: "card-title" },
+	                'h3',
+	                { className: 'card-title' },
 	                employer.name
 	              ),
 	              _react2.default.createElement(
-	                "a",
-	                { href: emailLink, className: "btn btn-primary emailButton" },
-	                "Email"
+	                'a',
+	                { href: emailLink, className: 'btn btn-primary emailButton' },
+	                'Email'
 	              ),
 	              _react2.default.createElement(
-	                "p",
-	                { className: "card-text company" },
+	                'p',
+	                { className: 'card-text company' },
 	                employer.company
 	              ),
-	              _react2.default.createElement("hr", null),
+	              _react2.default.createElement('hr', null),
 	              _react2.default.createElement(
-	                "h6",
+	                'h6',
 	                null,
 	                _react2.default.createElement(
-	                  "strong",
+	                  'strong',
 	                  null,
-	                  "Notes:"
+	                  'Notes:'
 	                )
 	              ),
 	              notes.map(function (note) {
 	                return _react2.default.createElement(
-	                  "div",
+	                  'div',
 	                  { key: note._id },
 	                  _react2.default.createElement(
-	                    "h6",
+	                    'h6',
 	                    null,
 	                    note.note
 	                  )
 	                );
 	              }),
 	              _react2.default.createElement(
-	                "div",
-	                { className: "input-group" },
-	                _react2.default.createElement("input", { type: "text", className: "form-control", placeholder: "New note", onKeyPress: function onKeyPress(target) {
+	                'div',
+	                { className: 'input-group' },
+	                _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'New note', onKeyPress: function onKeyPress(target) {
 	                    if (target.charCode === 13) {
 	                      _this5.addNote(target.currentTarget.value, _this5.state.favorites[index].employer);target.currentTarget.value = "";
 	                    }
 	                  } }),
 	                _react2.default.createElement(
-	                  "span",
-	                  { className: "input-group-btn" },
+	                  'span',
+	                  { className: 'input-group-btn' },
 	                  _react2.default.createElement(
-	                    "button",
-	                    { className: "btn btn-secondary", type: "button", onClick: function onClick(event) {
+	                    'button',
+	                    { className: 'btn btn-secondary', type: 'button', onClick: function onClick(event) {
 	                        _this5.addNote(event.currentTarget.parentElement.previousSibling.value, _this5.state.favorites[index].employer);
 	                        event.currentTarget.parentElement.previousSibling.value = "";
 	                      } },
-	                    "Add"
+	                    'Add'
 	                  )
 	                )
 	              )

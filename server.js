@@ -103,6 +103,8 @@ app.post('/api/user', (req, res) => {
 
     let userData = {}
 
+    console.log(req.body);
+
     axios.get('http://104.236.71.66:3000/api/users/')
       .then(({data: {users}}) => {
         return userData.employers = users;
@@ -111,14 +113,12 @@ app.post('/api/user', (req, res) => {
         return axios.get('http://104.236.71.66:3000/api/note/' + req.body.userId)
       })
       .then(({data: {notes}}) => {
-        console.log("N", notes);
         userData.notes = notes;
       })
       .then(() => {
         return axios.get('http://104.236.71.66:3000/api/beacon/' + req.body.beaconId)
       })
       .then(({data: {favorites}}) =>  {
-        console.log("F", favorites);
         userData.favorites = favorites;
         res.json(userData);
       })

@@ -14,7 +14,7 @@ const HomeView = React.createClass({
     this.loadUserData(this.props.user);
     setTimeout(() => {
       this.fetchData();
-    }, 2000);
+    }, 15000);
   },
 
   fetchData() {
@@ -22,7 +22,7 @@ const HomeView = React.createClass({
     setTimeout(() => {
       this.fetchData();
       console.log("2 seconds passd");
-    }, 2000);
+    }, 15000);
   },
 
   loadUserData(user) {

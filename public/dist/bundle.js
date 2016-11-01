@@ -26940,7 +26940,7 @@
 	    this.loadUserData(this.props.user);
 	    setTimeout(function () {
 	      _this.fetchData();
-	    }, 2000);
+	    }, 15000);
 	  },
 	  fetchData: function fetchData() {
 	    var _this2 = this;
@@ -26949,7 +26949,7 @@
 	    setTimeout(function () {
 	      _this2.fetchData();
 	      console.log("2 seconds passd");
-	    }, 2000);
+	    }, 15000);
 	  },
 	  loadUserData: function loadUserData(user) {
 	    var _this3 = this;

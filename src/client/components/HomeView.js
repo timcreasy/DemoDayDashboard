@@ -87,10 +87,8 @@ const HomeView = React.createClass({
                     notes.map(note => {
                       return (
                         <div key={note._id}>
-                          <button type="button" className="btn btn-default">
-                            <i className="fa fa-minus-circle"></i>
-                          </button>
-                          <h6>{note.note}</h6>
+                          <i className="fa fa-minus-circle removeNote"></i>
+                          <h6 className="noteText">{note.note}</h6>
                         </div>
                       )
                     })

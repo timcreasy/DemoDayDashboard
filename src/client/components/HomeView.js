@@ -86,7 +86,7 @@ const HomeView = React.createClass({
                   {
                     notes.map(note => {
                       return (
-                        <div className="note" key={note._id}>
+                        <div className="note" key={note._id} onClick={() => console.log(note._id)}>
                           <i className="fa fa-minus-circle removeNote"></i>
                           <h6 className="noteText">{note.note}</h6>
                         </div>

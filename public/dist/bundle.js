@@ -27037,7 +27037,9 @@
 	              notes.map(function (note) {
 	                return _react2.default.createElement(
 	                  'div',
-	                  { className: 'note', key: note._id },
+	                  { className: 'note', key: note._id, onClick: function onClick() {
+	                      return console.log(note._id);
+	                    } },
 	                  _react2.default.createElement('i', { className: 'fa fa-minus-circle removeNote' }),
 	                  _react2.default.createElement(
 	                    'h6',

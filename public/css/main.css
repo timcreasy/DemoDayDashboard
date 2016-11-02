@@ -33,19 +33,15 @@
     text-align: center;
 }
 
-.fa {
-    font-size: 1rem;
-}
-
 .removeNote {
     color: red;
     cursor: pointer;
     margin-right: 0.3rem;
 }
 
-.noteText {
+/*.noteText {
     display: inline-block;
-}
+}*/
 
 @-webkit-keyframes spin {
     0% {

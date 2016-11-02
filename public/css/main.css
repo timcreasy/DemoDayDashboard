@@ -33,13 +33,13 @@
     text-align: center;
 }
 
-.removeNote {
+/*.removeNote {
     color: red;
     cursor: pointer;
     margin-right: 0.3rem;
 }
 
-/*.noteText {
+.noteText {
     display: inline-block;
 }*/
 

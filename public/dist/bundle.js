@@ -26949,8 +26949,6 @@
 	  removeNote: function removeNote(noteId) {
 	    var _this2 = this;
 	
-	    console.log(noteId);
-	
 	    axios.post('https://demodaydashboard.herokuapp.com/api/remove/note', { noteId: noteId }).then(function (response) {
 	      _this2.loadUserData(_this2.props.user);
 	    }).catch(console.log);
@@ -26974,10 +26972,14 @@
 	  addNote: function addNote(noteText, employer) {
 	    var _this4 = this;
 	
+	    var date = Date.now();
+	    var timestamp = moment(date).format('MM/DD/YYYY');
+	
 	    var note = {
 	      note: noteText,
 	      employer: employer,
-	      student: this.props.user._id
+	      student: this.props.user._id,
+	      timestamp: timestamp
 	    };
 	    axios.post('https://demodaydashboard.herokuapp.com/api/note', note).then(function () {
 	      _this4.loadUserData(_this4.props.user);
@@ -27069,6 +27071,12 @@
 	                  _react2.default.createElement(
 	                    'h6',
 	                    { className: 'noteText' },
+	                    _react2.default.createElement(
+	                      'span',
+	                      { className: 'timestamp' },
+	                      note.timestamp,
+	                      ': '
+	                    ),
 	                    note.note
 	                  )
 	                );

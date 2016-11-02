@@ -24,8 +24,6 @@ const HomeView = React.createClass({
 
   removeNote(noteId) {
 
-    console.log(noteId);
-
     axios.post('https://demodaydashboard.herokuapp.com/api/remove/note', {noteId: noteId})
       .then(response => {
         this.loadUserData(this.props.user);
@@ -55,8 +53,6 @@ const HomeView = React.createClass({
 
     const date = Date.now();
     const timestamp = moment(date).format('MM/DD/YYYY');
-
-    console.log(timestamp);
 
     const note = {
       note: noteText,

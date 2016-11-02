@@ -27011,6 +27011,9 @@
 	          });
 	
 	          var emailLink = "mailto:" + employer.email;
+	          var firstName = employer.name.split(" ")[0];
+	          var lastName = employer.name.split(" ")[1];
+	          var linkedInLink = 'https://www.linkedin.com/vsearch/p?keywords=' + firstName + '%20' + lastName + '&company=' + employer.company;
 	
 	          return _react2.default.createElement(
 	            'div',
@@ -27032,6 +27035,11 @@
 	                'p',
 	                { className: 'card-text company' },
 	                employer.company
+	              ),
+	              _react2.default.createElement(
+	                'a',
+	                { href: linkedInLink, className: 'btn btn-primary emailButton' },
+	                'Search LinkedIn'
 	              ),
 	              _react2.default.createElement('hr', null),
 	              _react2.default.createElement(

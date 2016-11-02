@@ -85,6 +85,10 @@ const HomeView = React.createClass({
             });
 
             let emailLink = "mailto:" + employer.email;
+            let firstName = employer.name.split(" ")[0];
+            let lastName = employer.name.split(" ")[1];
+            let linkedInLink = `https://www.linkedin.com/vsearch/p?keywords=${firstName}%20${lastName}&company=${employer.company}`;
+
 
             return (
               <div className="col-lg-6" key={index}>
@@ -92,6 +96,7 @@ const HomeView = React.createClass({
                   <h3 className="card-title">{employer.name}</h3>
                   <a href={emailLink} className="btn btn-primary emailButton">Email</a>
                   <p className="card-text company">{employer.company}</p>
+                  <a href={linkedInLink} className="btn btn-primary emailButton">Search LinkedIn</a>
                   <hr />
                   <h6><strong>Notes:</strong></h6>
                   {

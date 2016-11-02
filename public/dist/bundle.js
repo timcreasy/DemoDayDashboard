@@ -27013,7 +27013,7 @@
 	          var emailLink = "mailto:" + employer.email;
 	          var firstName = employer.name.split(" ")[0];
 	          var lastName = employer.name.split(" ")[1];
-	          var linkedInLink = 'https://www.linkedin.com/vsearch/p?keywords=' + firstName + '%20' + lastName + '&company=' + employer.company;
+	          var linkedInLink = 'https://www.linkedin.com/vsearch/p?keywords=' + firstName + '%20' + lastName;
 	
 	          return _react2.default.createElement(
 	            'div',

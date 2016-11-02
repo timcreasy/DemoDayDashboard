@@ -26949,6 +26949,8 @@
 	  removeNote: function removeNote(noteId) {
 	    var _this2 = this;
 	
+	    console.log(noteId);
+	
 	    axios.delete('https://demodaydashboard.herokuapp.com/api/remove/note', { noteId: noteId }).then(function (response) {
 	      _this2.loadUserData(_this2.props.user);
 	    }).catch(console.log);

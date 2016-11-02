@@ -87,6 +87,9 @@ const HomeView = React.createClass({
                     notes.map(note => {
                       return (
                         <div key={note._id}>
+                          <button type="button" className="btn btn-default">
+                            <span className="glyphicon glyphicon-remove"></span>
+                          </button>
                           <h6>{note.note}</h6>
                         </div>
                       )

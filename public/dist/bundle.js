@@ -27039,6 +27039,11 @@
 	                  'div',
 	                  { key: note._id },
 	                  _react2.default.createElement(
+	                    'button',
+	                    { type: 'button', className: 'btn btn-default' },
+	                    _react2.default.createElement('span', { className: 'glyphicon glyphicon-remove' })
+	                  ),
+	                  _react2.default.createElement(
 	                    'h6',
 	                    null,
 	                    note.note

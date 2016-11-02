@@ -14,6 +14,7 @@
 
 .company {
     color: #737576;
+    display: inline;
 }
 
 .mainView h1 {

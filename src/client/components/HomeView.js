@@ -52,10 +52,14 @@ const HomeView = React.createClass({
   },
 
   addNote(noteText, employer) {
+
+    const timestamp = moment(Date.now()).format('MM/DD/YYYY');
+
     const note = {
       note: noteText,
       employer: employer,
-      student: this.props.user._id
+      student: this.props.user._id,
+      timestamp: timestamp;
     };
     axios.post('https://demodaydashboard.herokuapp.com/api/note', note)
       .then(() => {
@@ -107,7 +111,7 @@ const HomeView = React.createClass({
                       return (
                         <div className="note" key={note._id} onClick={() => this.removeNote(note._id)}>
                           <i className="fa fa-minus-circle removeNote"></i>
-                          <h6 className="noteText">{note.note}</h6>
+                          <h6 className="noteText"><span className="timestamp">{note.timestamp}: </span>{note.note}</h6>
                         </div>
                       )
                     })

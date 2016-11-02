@@ -88,7 +88,7 @@ const HomeView = React.createClass({
                       return (
                         <div key={note._id}>
                           <button type="button" className="btn btn-default">
-                            <span className="glyphicon glyphicon-remove"></span>
+                            <i className="fa fa-minus-circle"></i>
                           </button>
                           <h6>{note.note}</h6>
                         </div>

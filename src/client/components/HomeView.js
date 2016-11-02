@@ -26,7 +26,7 @@ const HomeView = React.createClass({
 
     console.log(noteId);
 
-    axios.delete('https://demodaydashboard.herokuapp.com/api/remove/note', {noteId: noteId})
+    axios.post('https://demodaydashboard.herokuapp.com/api/remove/note', {noteId: noteId})
       .then(response => {
         this.loadUserData(this.props.user);
       })

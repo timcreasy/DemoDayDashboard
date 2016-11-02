@@ -27026,7 +27026,7 @@
 	                null,
 	                _react2.default.createElement(
 	                  'h3',
-	                  { className: 'card-title' },
+	                  { className: 'card-title cardText' },
 	                  employer.name
 	                ),
 	                _react2.default.createElement(
@@ -27039,7 +27039,7 @@
 	                'div',
 	                null,
 	                _react2.default.createElement(
-	                  'p',
+	                  'h3',
 	                  { className: 'card-text company' },
 	                  employer.company
 	                ),

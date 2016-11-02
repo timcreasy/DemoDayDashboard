@@ -59,7 +59,7 @@ const HomeView = React.createClass({
       note: noteText,
       employer: employer,
       student: this.props.user._id,
-      timestamp: timestamp;
+      timestamp: timestamp
     };
     axios.post('https://demodaydashboard.herokuapp.com/api/note', note)
       .then(() => {

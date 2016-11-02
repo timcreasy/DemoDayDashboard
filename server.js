@@ -149,7 +149,8 @@ app.post('/api/note', (req, res) => {
   const noteToPost = {
     note: req.body.note,
     employer: req.body.employer,
-    student: req.body.student
+    student: req.body.student,
+    timestamp: req.body.timestamp
   };
 
   axios.post('http://104.236.71.66:3000/api/new/note', noteToPost)

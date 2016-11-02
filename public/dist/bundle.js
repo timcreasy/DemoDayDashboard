@@ -26946,8 +26946,15 @@
 	      _this.updateData();
 	    }, 15000);
 	  },
-	  loadUserData: function loadUserData(user) {
+	  removeNote: function removeNote(noteId) {
 	    var _this2 = this;
+	
+	    axios.delete('https://demodaydashboard.herokuapp.com/api/remove/note', { noteId: noteId }).then(function (response) {
+	      _this2.loadUserData(_this2.props.user);
+	    }).catch(console.log);
+	  },
+	  loadUserData: function loadUserData(user) {
+	    var _this3 = this;
 	
 	    var postObj = {
 	      userId: user._id,
@@ -26955,7 +26962,7 @@
 	    };
 	
 	    axios.post('https://demodaydashboard.herokuapp.com/api/user', postObj).then(function (response) {
-	      _this2.setState({
+	      _this3.setState({
 	        favorites: response.data.favorites,
 	        employers: response.data.employers,
 	        notes: response.data.notes
@@ -26963,7 +26970,7 @@
 	    });
 	  },
 	  addNote: function addNote(noteText, employer) {
-	    var _this3 = this;
+	    var _this4 = this;
 	
 	    var note = {
 	      note: noteText,
@@ -26971,13 +26978,13 @@
 	      student: this.props.user._id
 	    };
 	    axios.post('https://demodaydashboard.herokuapp.com/api/note', note).then(function () {
-	      _this3.loadUserData(_this3.props.user);
+	      _this4.loadUserData(_this4.props.user);
 	    }).catch(console.log);
 	  },
 	
 	
 	  render: function render() {
-	    var _this4 = this;
+	    var _this5 = this;
 	
 	    return _react2.default.createElement(
 	      'div',
@@ -26992,12 +26999,12 @@
 	        { id: 'cardContainer' },
 	        this.state.favorites.map(function (favorite, index) {
 	
-	          var employerPosition = _this4.state.employers.map(function (employer) {
+	          var employerPosition = _this5.state.employers.map(function (employer) {
 	            return employer._id;
 	          }).indexOf(favorite.employer);
-	          var employer = _this4.state.employers[employerPosition];
+	          var employer = _this5.state.employers[employerPosition];
 	
-	          var notes = _this4.state.notes.filter(function (note) {
+	          var notes = _this5.state.notes.filter(function (note) {
 	            return note.employer === employer._id;
 	          });
 	
@@ -27038,7 +27045,7 @@
 	                return _react2.default.createElement(
 	                  'div',
 	                  { className: 'note', key: note._id, onClick: function onClick() {
-	                      return console.log(note._id);
+	                      return _this5.removeNote(note._id);
 	                    } },
 	                  _react2.default.createElement('i', { className: 'fa fa-minus-circle removeNote' }),
 	                  _react2.default.createElement(
@@ -27053,7 +27060,7 @@
 	                { className: 'input-group' },
 	                _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'New note', onKeyPress: function onKeyPress(target) {
 	                    if (target.charCode === 13) {
-	                      _this4.addNote(target.currentTarget.value, _this4.state.favorites[index].employer);target.currentTarget.value = "";
+	                      _this5.addNote(target.currentTarget.value, _this5.state.favorites[index].employer);target.currentTarget.value = "";
 	                    }
 	                  } }),
 	                _react2.default.createElement(
@@ -27062,7 +27069,7 @@
 	                  _react2.default.createElement(
 	                    'button',
 	                    { className: 'btn btn-secondary', type: 'button', onClick: function onClick(event) {
-	                        _this4.addNote(event.currentTarget.parentElement.previousSibling.value, _this4.state.favorites[index].employer);
+	                        _this5.addNote(event.currentTarget.parentElement.previousSibling.value, _this5.state.favorites[index].employer);
 	                        event.currentTarget.parentElement.previousSibling.value = "";
 	                      } },
 	                    'Add'

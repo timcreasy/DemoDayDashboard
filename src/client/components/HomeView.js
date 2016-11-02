@@ -22,6 +22,14 @@ const HomeView = React.createClass({
     }, 15000);
   },
 
+  removeNote(noteId) {
+    axios.delete('https://demodaydashboard.herokuapp.com/api/remove/note', {noteId: noteId})
+      .then(response => {
+        this.loadUserData(this.props.user);
+      })
+      .catch(console.log);
+  },
+
   loadUserData(user) {
 
     let postObj = {
@@ -86,7 +94,7 @@ const HomeView = React.createClass({
                   {
                     notes.map(note => {
                       return (
-                        <div className="note" key={note._id} onClick={() => console.log(note._id)}>
+                        <div className="note" key={note._id} onClick={() => this.removeNote(note._id)}>
                           <i className="fa fa-minus-circle removeNote"></i>
                           <h6 className="noteText">{note.note}</h6>
                         </div>

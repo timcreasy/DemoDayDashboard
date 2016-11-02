@@ -93,10 +93,14 @@ const HomeView = React.createClass({
             return (
               <div className="col-lg-6" key={index}>
                 <div className="card card-block">
-                  <h3 className="card-title">{employer.name}</h3>
-                  <a href={emailLink} className="btn btn-primary emailButton">Email</a>
-                  <p className="card-text company">{employer.company}</p>
-                  <a href={linkedInLink} className="btn btn-primary emailButton">Search LinkedIn</a>
+                  <div>
+                    <h3 className="card-title">{employer.name}</h3>
+                    <a href={emailLink} className="btn btn-primary emailButton">Email</a>
+                  </div>
+                  <div>
+                    <p className="card-text company">{employer.company}</p>
+                    <a href={linkedInLink} className="btn btn-primary emailButton">Search LinkedIn</a>
+                  </div>
                   <hr />
                   <h6><strong>Notes:</strong></h6>
                   {

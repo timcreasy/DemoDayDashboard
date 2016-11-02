@@ -163,6 +163,8 @@ app.post('/api/note', (req, res) => {
 
 app.delete('/api/remove/note', (req, res) => {
 
+  console.log(req.body);
+
   axios.delete('http://104.236.71.66:3000/api/remove/note', {noteId: req.body.noteId})
     .then(response => {
       res.send(202);

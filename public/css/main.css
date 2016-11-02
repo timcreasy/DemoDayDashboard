@@ -53,6 +53,10 @@
     display: inline;
 }
 
+.timestamp {
+    color: #737576;
+}
+
 @-webkit-keyframes spin {
     0% {
         -webkit-transform: rotate(0deg);

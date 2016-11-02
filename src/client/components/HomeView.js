@@ -53,7 +53,10 @@ const HomeView = React.createClass({
 
   addNote(noteText, employer) {
 
-    const timestamp = moment(Date.now()).format('MM/DD/YYYY');
+    const date = Date.now();
+    const timestamp = moment(date).format('MM/DD/YYYY');
+
+    console.log(timestamp);
 
     const note = {
       note: noteText,

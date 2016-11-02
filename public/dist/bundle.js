@@ -27022,24 +27022,32 @@
 	              'div',
 	              { className: 'card card-block' },
 	              _react2.default.createElement(
-	                'h3',
-	                { className: 'card-title' },
-	                employer.name
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                  'h3',
+	                  { className: 'card-title' },
+	                  employer.name
+	                ),
+	                _react2.default.createElement(
+	                  'a',
+	                  { href: emailLink, className: 'btn btn-primary emailButton' },
+	                  'Email'
+	                )
 	              ),
 	              _react2.default.createElement(
-	                'a',
-	                { href: emailLink, className: 'btn btn-primary emailButton' },
-	                'Email'
-	              ),
-	              _react2.default.createElement(
-	                'p',
-	                { className: 'card-text company' },
-	                employer.company
-	              ),
-	              _react2.default.createElement(
-	                'a',
-	                { href: linkedInLink, className: 'btn btn-primary emailButton' },
-	                'Search LinkedIn'
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                  'p',
+	                  { className: 'card-text company' },
+	                  employer.company
+	                ),
+	                _react2.default.createElement(
+	                  'a',
+	                  { href: linkedInLink, className: 'btn btn-primary emailButton' },
+	                  'Search LinkedIn'
+	                )
 	              ),
 	              _react2.default.createElement('hr', null),
 	              _react2.default.createElement(

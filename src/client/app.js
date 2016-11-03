@@ -6,6 +6,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Home from "./components/Home";
 import Test from "./components/Test";
+import NewConnection from "./components/NewConnection";
 
 ReactDOM.render((
   <Router history={browserHistory}>
@@ -13,6 +14,7 @@ ReactDOM.render((
       <IndexRoute component={Home} />
       <Route path="/login" component={Login}/>
       <Route path="register/:beaconId" component={Register}/>
+      <Route path="/new" component={NewConnection}/>
       <Route path="*" component={Test} />
     </Route>
   </Router>

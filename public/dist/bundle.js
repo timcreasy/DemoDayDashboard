@@ -26999,9 +26999,13 @@
 	      'div',
 	      { className: 'mainView' },
 	      _react2.default.createElement(
-	        'h1',
-	        { id: 'mainTitle' },
-	        'Connections'
+	        'div',
+	        { id: 'titleContainer' },
+	        _react2.default.createElement(
+	          'h1',
+	          { id: 'mainTitle' },
+	          'Connections'
+	        )
 	      ),
 	      _react2.default.createElement(
 	        'a',
@@ -27463,13 +27467,9 @@
 	      "div",
 	      { className: "mainView" },
 	      _react2.default.createElement(
-	        "div",
-	        { id: "titleContainer" },
-	        _react2.default.createElement(
-	          "h1",
-	          null,
-	          "New Connection"
-	        )
+	        "h1",
+	        null,
+	        "New Connection"
 	      ),
 	      _react2.default.createElement(
 	        "div",

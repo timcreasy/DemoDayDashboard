@@ -71,7 +71,9 @@ const HomeView = React.createClass({
   
     return (
       <div className="mainView">
-        <h1 id="mainTitle">Connections</h1>
+        <div id="titleContainer">
+          <h1 id="mainTitle">Connections</h1>
+        </div>
         <a href="/new" className="btn btn-primary" id="newConnectionButton">+</a>
         <div id="cardContainer">
         {

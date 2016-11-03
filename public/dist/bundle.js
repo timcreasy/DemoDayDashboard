@@ -27540,7 +27540,7 @@
 	
 	    return _react2.default.createElement(
 	      "div",
-	      { className: "mainView" },
+	      { className: "mainView newConnection" },
 	      _react2.default.createElement(
 	        "h1",
 	        null,

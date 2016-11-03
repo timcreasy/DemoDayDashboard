@@ -70,6 +70,15 @@
     margin-top: 2.0em;
 }
 
+#logoutButton {
+    float: left;
+    margin-top: 2.0em;
+}
+
+.newConnection label {
+    font-size: 1rem;
+}
+
 @-webkit-keyframes spin {
     0% {
         -webkit-transform: rotate(0deg);

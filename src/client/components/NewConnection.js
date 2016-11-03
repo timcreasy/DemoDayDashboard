@@ -54,7 +54,7 @@ const NewConnection = React.createClass({
   render: function() {
 
     return (
-      <div className="mainView">
+      <div className="mainView newConnection">
         <h1>New Connection</h1>
         <div className="form-group">
           <label htmlFor="name">Name:</label>

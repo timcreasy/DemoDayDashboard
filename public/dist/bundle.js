@@ -76,9 +76,9 @@
 	
 	var _Test2 = _interopRequireDefault(_Test);
 	
-	var _NewConnection = __webpack_require__(238);
+	var _AddConnection = __webpack_require__(239);
 	
-	var _NewConnection2 = _interopRequireDefault(_NewConnection);
+	var _AddConnection2 = _interopRequireDefault(_AddConnection);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -91,7 +91,7 @@
 	    _react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { path: "/login", component: _Login2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { path: "register/:beaconId", component: _Register2.default }),
-	    _react2.default.createElement(_reactRouter.Route, { path: "/new", component: AddConnection }),
+	    _react2.default.createElement(_reactRouter.Route, { path: "/new", component: _AddConnection2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { path: "*", component: _Test2.default })
 	  )
 	), document.getElementById('app'));
@@ -27522,6 +27522,64 @@
 	});
 	
 	module.exports = NewConnection;
+
+/***/ },
+/* 239 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _NewConnection = __webpack_require__(238);
+	
+	var _NewConnection2 = _interopRequireDefault(_NewConnection);
+	
+	var _Spinner = __webpack_require__(231);
+	
+	var _Spinner2 = _interopRequireDefault(_Spinner);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var AddConnection = _react2.default.createClass({
+	  displayName: "AddConnection",
+	  getInitialState: function getInitialState() {
+	    return {
+	      isLoggedIn: false,
+	      viewComponent: _react2.default.createElement(_Spinner2.default, null)
+	    };
+	  },
+	  componentWillMount: function componentWillMount() {
+	    var _this = this;
+	
+	    axios.get('https://demodaydashboard.herokuapp.com/api/user').then(function (_ref) {
+	      var data = _ref.data;
+	
+	      if (data.msg === "No user") {
+	        browserHistory.push('/login');
+	      } else {
+	        _this.setState({ viewComponent: _react2.default.createElement(_NewConnection2.default, null) });
+	      }
+	    }).catch(console.log);
+	  },
+	
+	
+	  render: function render() {
+	    return _react2.default.createElement(
+	      "div",
+	      null,
+	      _react2.default.createElement(
+	        "h1",
+	        null,
+	        this.state.viewComponent
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = AddConnection;
 
 /***/ }
 /******/ ]);

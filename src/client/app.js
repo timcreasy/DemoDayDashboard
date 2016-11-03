@@ -6,7 +6,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Home from "./components/Home";
 import Test from "./components/Test";
-import NewConnection from "./components/NewConnection";
+import AddConnection from "./components/AddConnection";
 
 ReactDOM.render((
   <Router history={browserHistory}>

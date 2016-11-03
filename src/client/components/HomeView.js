@@ -49,6 +49,10 @@ const HomeView = React.createClass({
 
   },
 
+  logoutPressed() {
+    console.log("LOGOUT");
+  },
+
   addNote(noteText, employer) {
 
     const date = Date.now();
@@ -72,6 +76,7 @@ const HomeView = React.createClass({
     return (
       <div className="mainView">
         <div id="titleContainer">
+          <button className="btn btn-danger" type="button" id="logoutButton" onClick={this.logoutPressed}>Logout</button>
           <h1 id="mainTitle">Connections</h1>
           <a href="/new" className="btn btn-primary" id="newConnectionButton">+</a>
         </div>

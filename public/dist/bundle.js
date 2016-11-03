@@ -27005,12 +27005,12 @@
 	          'h1',
 	          { id: 'mainTitle' },
 	          'Connections'
+	        ),
+	        _react2.default.createElement(
+	          'a',
+	          { href: '/new', className: 'btn btn-primary', id: 'newConnectionButton' },
+	          '+'
 	        )
-	      ),
-	      _react2.default.createElement(
-	        'a',
-	        { href: '/new', className: 'btn btn-primary', id: 'newConnectionButton' },
-	        '+'
 	      ),
 	      _react2.default.createElement(
 	        'div',

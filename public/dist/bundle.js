@@ -76,7 +76,7 @@
 	
 	var _Test2 = _interopRequireDefault(_Test);
 	
-	var _AddConnection = __webpack_require__(239);
+	var _AddConnection = __webpack_require__(238);
 	
 	var _AddConnection2 = _interopRequireDefault(_AddConnection);
 	
@@ -26974,6 +26974,9 @@
 	      });
 	    });
 	  },
+	  logoutPressed: function logoutPressed() {
+	    console.log("LOGOUT");
+	  },
 	  addNote: function addNote(noteText, employer) {
 	    var _this4 = this;
 	
@@ -27001,6 +27004,11 @@
 	      _react2.default.createElement(
 	        'div',
 	        { id: 'titleContainer' },
+	        _react2.default.createElement(
+	          'button',
+	          { className: 'btn btn-danger', type: 'button', id: 'logoutButton', onClick: this.logoutPressed },
+	          'Logout'
+	        ),
 	        _react2.default.createElement(
 	          'h1',
 	          { id: 'mainTitle' },
@@ -27417,6 +27425,66 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _NewConnection = __webpack_require__(239);
+	
+	var _NewConnection2 = _interopRequireDefault(_NewConnection);
+	
+	var _Spinner = __webpack_require__(231);
+	
+	var _Spinner2 = _interopRequireDefault(_Spinner);
+	
+	var _reactRouter = __webpack_require__(172);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var AddConnection = _react2.default.createClass({
+	  displayName: "AddConnection",
+	  getInitialState: function getInitialState() {
+	    return {
+	      isLoggedIn: false,
+	      viewComponent: _react2.default.createElement(_Spinner2.default, null)
+	    };
+	  },
+	  componentWillMount: function componentWillMount() {
+	    var _this = this;
+	
+	    axios.get('https://demodaydashboard.herokuapp.com/api/user').then(function (_ref) {
+	      var data = _ref.data;
+	
+	      if (data.msg === "No user") {
+	        _reactRouter.browserHistory.push('/login');
+	      } else {
+	        _this.setState({ viewComponent: _react2.default.createElement(_NewConnection2.default, null) });
+	      }
+	    }).catch(console.log);
+	  },
+	
+	
+	  render: function render() {
+	    return _react2.default.createElement(
+	      "div",
+	      null,
+	      _react2.default.createElement(
+	        "h1",
+	        null,
+	        this.state.viewComponent
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = AddConnection;
+
+/***/ },
+/* 239 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
 	var _reactRouter = __webpack_require__(172);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -27522,66 +27590,6 @@
 	});
 	
 	module.exports = NewConnection;
-
-/***/ },
-/* 239 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _NewConnection = __webpack_require__(238);
-	
-	var _NewConnection2 = _interopRequireDefault(_NewConnection);
-	
-	var _Spinner = __webpack_require__(231);
-	
-	var _Spinner2 = _interopRequireDefault(_Spinner);
-	
-	var _reactRouter = __webpack_require__(172);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var AddConnection = _react2.default.createClass({
-	  displayName: "AddConnection",
-	  getInitialState: function getInitialState() {
-	    return {
-	      isLoggedIn: false,
-	      viewComponent: _react2.default.createElement(_Spinner2.default, null)
-	    };
-	  },
-	  componentWillMount: function componentWillMount() {
-	    var _this = this;
-	
-	    axios.get('https://demodaydashboard.herokuapp.com/api/user').then(function (_ref) {
-	      var data = _ref.data;
-	
-	      if (data.msg === "No user") {
-	        _reactRouter.browserHistory.push('/login');
-	      } else {
-	        _this.setState({ viewComponent: _react2.default.createElement(_NewConnection2.default, null) });
-	      }
-	    }).catch(console.log);
-	  },
-	
-	
-	  render: function render() {
-	    return _react2.default.createElement(
-	      "div",
-	      null,
-	      _react2.default.createElement(
-	        "h1",
-	        null,
-	        this.state.viewComponent
-	      )
-	    );
-	  }
-	});
-	
-	module.exports = AddConnection;
 
 /***/ }
 /******/ ]);

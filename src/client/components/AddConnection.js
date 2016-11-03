@@ -1,6 +1,7 @@
 import React from "react";
 import NewConnection from "./NewConnection";
 import Spinner from "./Spinner";
+import { browserHistory } from 'react-router';
 
 const AddConnection = React.createClass({
 

@@ -27541,6 +27541,8 @@
 	
 	var _Spinner2 = _interopRequireDefault(_Spinner);
 	
+	var _reactRouter = __webpack_require__(172);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var AddConnection = _react2.default.createClass({
@@ -27558,7 +27560,7 @@
 	      var data = _ref.data;
 	
 	      if (data.msg === "No user") {
-	        browserHistory.push('/login');
+	        _reactRouter.browserHistory.push('/login');
 	      } else {
 	        _this.setState({ viewComponent: _react2.default.createElement(_NewConnection2.default, null) });
 	      }

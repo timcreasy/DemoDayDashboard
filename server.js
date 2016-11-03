@@ -155,7 +155,7 @@ app.post('/api/employer', (req, res) => {
 
     axios.post('http://104.236.71.66:3000/api/users', employerToCreate)
       .then(response =>  {
-        res.sendStatus(201);
+        res.json({user: response.data.user});
       })
       .catch(console.log);
 })

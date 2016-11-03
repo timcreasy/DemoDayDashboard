@@ -27445,6 +27445,7 @@
 	    };
 	
 	    axios.post('https://demodaydashboard.herokuapp.com/api/employer', newConnection).then(function (response) {
+	      console.log(response.data.user);
 	      _this.clearForm();
 	      // alert("Account successfully created!");
 	      // browserHistory.push('/login');

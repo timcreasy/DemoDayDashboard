@@ -29,6 +29,7 @@ const NewConnection = React.createClass({
 
     axios.post('https://demodaydashboard.herokuapp.com/api/employer', newConnection)
       .then(response =>  {
+        console.log(response.data.user);
         this.clearForm();
         // alert("Account successfully created!");
         // browserHistory.push('/login');

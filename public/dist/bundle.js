@@ -76,6 +76,10 @@
 	
 	var _Test2 = _interopRequireDefault(_Test);
 	
+	var _NewConnection = __webpack_require__(238);
+	
+	var _NewConnection2 = _interopRequireDefault(_NewConnection);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	_reactDom2.default.render(_react2.default.createElement(
@@ -87,6 +91,7 @@
 	    _react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { path: "/login", component: _Login2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { path: "register/:beaconId", component: _Register2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: "/new", component: _NewConnection2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { path: "*", component: _Test2.default })
 	  )
 	), document.getElementById('app'));
@@ -26999,6 +27004,11 @@
 	        'Connections'
 	      ),
 	      _react2.default.createElement(
+	        'a',
+	        { href: '/new', className: 'btn btn-primary', id: 'newConnectionButton' },
+	        '+'
+	      ),
+	      _react2.default.createElement(
 	        'div',
 	        { id: 'cardContainer' },
 	        this.state.favorites.map(function (favorite, index) {
@@ -27392,6 +27402,119 @@
 	});
 	
 	module.exports = Test;
+
+/***/ },
+/* 238 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(172);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var NewConnection = _react2.default.createClass({
+	  displayName: "NewConnection",
+	  getInitialState: function getInitialState() {
+	    return { email: "", name: "", company: "" };
+	  },
+	  emailInputChanged: function emailInputChanged(e) {
+	    this.setState({ email: e.target.value });
+	  },
+	  nameInputChanged: function nameInputChanged(e) {
+	    this.setState({ name: e.target.value });
+	  },
+	  companyInputChanged: function companyInputChanged(e) {
+	    this.setState({ company: e.target.value });
+	  },
+	  createConnectionPressed: function createConnectionPressed() {
+	
+	    var newConnection = {
+	      name: this.state.name,
+	      email: this.state.email,
+	      company: this.state.company
+	    };
+	
+	    console.log("NEW CONNECTION:", newConnection);
+	
+	    this.clearForm();
+	
+	    // axios.post('https://demodaydashboard.herokuapp.com/api/students', user)
+	    //   .then(response =>  {
+	    //     this.clearForm();
+	    //     alert("Account successfully created!");
+	    //     browserHistory.push('/login');
+	    //   })
+	    //   .catch(console.log);
+	  },
+	  clearForm: function clearForm() {
+	    this.setState({ email: "", name: "", company: "" });
+	  },
+	
+	
+	  render: function render() {
+	    var _this = this;
+	
+	    return _react2.default.createElement(
+	      "div",
+	      { className: "mainView" },
+	      _react2.default.createElement(
+	        "h1",
+	        null,
+	        "New Connection"
+	      ),
+	      _react2.default.createElement(
+	        "div",
+	        { className: "form-group" },
+	        _react2.default.createElement(
+	          "label",
+	          { htmlFor: "name" },
+	          "Name:"
+	        ),
+	        _react2.default.createElement("input", { type: "text", className: "form-control", id: "name", value: this.state.name, onChange: this.nameInputChanged })
+	      ),
+	      _react2.default.createElement(
+	        "div",
+	        { className: "form-group" },
+	        _react2.default.createElement(
+	          "label",
+	          { htmlFor: "company" },
+	          "Company:"
+	        ),
+	        _react2.default.createElement("input", { type: "text", className: "form-control", onChange: this.companyInputChanged, id: "company", value: this.state.company })
+	      ),
+	      _react2.default.createElement(
+	        "div",
+	        { className: "form-group" },
+	        _react2.default.createElement(
+	          "label",
+	          { htmlFor: "email" },
+	          "Email:"
+	        ),
+	        _react2.default.createElement("input", { type: "email", className: "form-control", onChange: this.emailInputChanged, id: "email", value: this.state.email, onKeyPress: function onKeyPress(t) {
+	            if (t.charCode === 13) {
+	              _this.createConnectionPressed();
+	            }
+	          } })
+	      ),
+	      _react2.default.createElement(
+	        "div",
+	        { className: "center" },
+	        _react2.default.createElement(
+	          "button",
+	          { type: "button", className: "btn btn-primary", onClick: this.createConnectionPressed },
+	          "Add Connection"
+	        )
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = NewConnection;
 
 /***/ }
 /******/ ]);

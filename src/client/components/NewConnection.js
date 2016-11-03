@@ -48,7 +48,9 @@ const NewConnection = React.createClass({
 
     return (
       <div className="mainView">
-        <h1>New Connection</h1>
+        <div id="titleContainer">
+          <h1>New Connection</h1>
+        </div>
         <div className="form-group">
           <label htmlFor="name">Name:</label>
           <input type="text" className="form-control" id="name" value={this.state.name}  onChange={this.nameInputChanged}/>

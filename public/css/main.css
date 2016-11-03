@@ -57,8 +57,17 @@
     color: #737576;
 }
 
+#titleContainer {
+    text-align: center;
+}
+
+#mainTitle {
+    display: inline-block;
+}
+
 #newConnectionButton {
     float: right;
+    margin-top: 2.0em;
 }
 
 @-webkit-keyframes spin {

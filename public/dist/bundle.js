@@ -27436,6 +27436,7 @@
 	    this.setState({ company: e.target.value });
 	  },
 	  createConnectionPressed: function createConnectionPressed() {
+	    var _this = this;
 	
 	    var newConnection = {
 	      name: this.state.name,
@@ -27452,12 +27453,10 @@
 	        card: "No card"
 	      };
 	      return axios.post('https://demodaydashboard.herokuapp.com/api/favorite', favorite);
-	    }).then(function (favResponse) {
-	      console.log(favResponse);
+	    }).then(function () {
+	      _this.clearForm();
+	      _reactRouter.browserHistory.push('/');
 	    }).catch(console.log);
-	    // this.clearForm();
-	    // alert("Account successfully created!");
-	    // browserHistory.push('/login');
 	  },
 	  clearForm: function clearForm() {
 	    this.setState({ email: "", name: "", company: "" });
@@ -27465,7 +27464,7 @@
 	
 	
 	  render: function render() {
-	    var _this = this;
+	    var _this2 = this;
 	
 	    return _react2.default.createElement(
 	      "div",
@@ -27505,7 +27504,7 @@
 	        ),
 	        _react2.default.createElement("input", { type: "email", className: "form-control", onChange: this.emailInputChanged, id: "email", value: this.state.email, onKeyPress: function onKeyPress(t) {
 	            if (t.charCode === 13) {
-	              _this.createConnectionPressed();
+	              _this2.createConnectionPressed();
 	            }
 	          } })
 	      ),

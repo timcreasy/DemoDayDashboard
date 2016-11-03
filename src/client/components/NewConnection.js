@@ -39,13 +39,12 @@ const NewConnection = React.createClass({
         };
         return axios.post('https://demodaydashboard.herokuapp.com/api/favorite', favorite);
       })
-      .then((favResponse) => {
-        console.log(favResponse);
+      .then(() => {
+        this.clearForm();
+        browserHistory.push('/');
       })
       .catch(console.log);
-        // this.clearForm();
-        // alert("Account successfully created!");
-        // browserHistory.push('/login');
+
   },
 
   clearForm() {

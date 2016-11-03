@@ -27,17 +27,13 @@ const NewConnection = React.createClass({
       company: this.state.company
     };
 
-    console.log("NEW CONNECTION:", newConnection);
-
-    this.clearForm();
-
-    // axios.post('https://demodaydashboard.herokuapp.com/api/students', user)
-    //   .then(response =>  {
-    //     this.clearForm();
-    //     alert("Account successfully created!");
-    //     browserHistory.push('/login');
-    //   })
-    //   .catch(console.log);
+    axios.post('https://demodaydashboard.herokuapp.com/api/employer', newConnection)
+      .then(response =>  {
+        this.clearForm();
+        // alert("Account successfully created!");
+        // browserHistory.push('/login');
+      })
+      .catch(console.log);
   },
 
   clearForm() {

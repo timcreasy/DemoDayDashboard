@@ -144,6 +144,23 @@ app.post('/api/students', (req, res) => {
 })
 
 
+app.post('/api/employer', (req, res) => {
+
+    const employerToCreate = {
+      name: req.body.name,
+      email: req.body.email,
+      company: req.body.company,
+      password: "test"
+    };
+
+    axios.post('http://104.236.71.66:3000/api/users', employerToCreate)
+      .then(response =>  {
+        res.sendStatus(201);
+      })
+      .catch(console.log);
+})
+
+
 app.post('/api/note', (req, res) => {
 
   const noteToPost = {

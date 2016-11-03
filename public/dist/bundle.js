@@ -91,7 +91,7 @@
 	    _react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { path: "/login", component: _Login2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { path: "register/:beaconId", component: _Register2.default }),
-	    _react2.default.createElement(_reactRouter.Route, { path: "/new", component: _NewConnection2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: "/new", component: AddConnection }),
 	    _react2.default.createElement(_reactRouter.Route, { path: "*", component: _Test2.default })
 	  )
 	), document.getElementById('app'));

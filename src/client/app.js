@@ -14,7 +14,7 @@ ReactDOM.render((
       <IndexRoute component={Home} />
       <Route path="/login" component={Login}/>
       <Route path="register/:beaconId" component={Register}/>
-      <Route path="/new" component={NewConnection}/>
+      <Route path="/new" component={AddConnection}/>
       <Route path="*" component={Test} />
     </Route>
   </Router>

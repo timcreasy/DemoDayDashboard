@@ -180,12 +180,10 @@ app.post('/api/note', (req, res) => {
 
 
 app.post('/api/favorite', (req, res) => {
-
-  console.log("USER", req.session.user);
-
+  
   const favorite = {
     employer: req.body.employer,
-    student: req.session.user._id,
+    student: req.session.beaconId,
     card: req.body.card,
   };
 

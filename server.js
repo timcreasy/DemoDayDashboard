@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 
 app.get('/api/user', (req, res) => {
-  if (req.session.user) {
+  if (req.session.user !== null) {
     res.json(req.session.user);
   } else {
     res.json({msg: "No user"});
@@ -206,7 +206,10 @@ app.post('/api/remove/note', (req, res) => {
 
 });
 
-
+app.delete('/api/logout', (req, res) => {
+  req.session.user = null;
+  res.send(200);
+});
 
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'public', 'index.html'))

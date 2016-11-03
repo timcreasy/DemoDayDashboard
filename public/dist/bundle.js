@@ -26928,6 +26928,8 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _reactRouter = __webpack_require__(172);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var HomeView = _react2.default.createClass({
@@ -26975,7 +26977,9 @@
 	    });
 	  },
 	  logoutPressed: function logoutPressed() {
-	    console.log("LOGOUT");
+	    axios.delete('https://demodaydashboard.herokuapp.com/api/logout').then(function (response) {
+	      _reactRouter.browserHistory.push('/login');
+	    });
 	  },
 	  addNote: function addNote(noteText, employer) {
 	    var _this4 = this;

@@ -1,4 +1,5 @@
 import React from "react";
+import { browserHistory } from 'react-router';
 
 const HomeView = React.createClass({
 
@@ -50,7 +51,10 @@ const HomeView = React.createClass({
   },
 
   logoutPressed() {
-    console.log("LOGOUT");
+    axios.delete('https://demodaydashboard.herokuapp.com/api/logout')
+      .then(response => {
+        browserHistory.push('/login');
+      })
   },
 
   addNote(noteText, employer) {

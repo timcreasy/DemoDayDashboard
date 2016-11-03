@@ -57,6 +57,10 @@
     color: #737576;
 }
 
+#newConnectionButton {
+    float: right;
+}
+
 @-webkit-keyframes spin {
     0% {
         -webkit-transform: rotate(0deg);

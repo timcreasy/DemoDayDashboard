@@ -72,6 +72,7 @@ const HomeView = React.createClass({
     return (
       <div className="mainView">
         <h1>Connections</h1>
+        <a href="/new" className="btn btn-primary" id="newConnectionButton">+</a>
         <div id="cardContainer">
         {
           this.state.favorites.map((favorite, index) => {

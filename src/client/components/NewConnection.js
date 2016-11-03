@@ -29,6 +29,8 @@ const NewConnection = React.createClass({
 
     console.log("NEW CONNECTION:", newConnection);
 
+    this.clearForm();
+
     // axios.post('https://demodaydashboard.herokuapp.com/api/students', user)
     //   .then(response =>  {
     //     this.clearForm();

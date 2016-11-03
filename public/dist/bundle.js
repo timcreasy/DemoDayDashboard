@@ -27436,7 +27436,6 @@
 	    this.setState({ company: e.target.value });
 	  },
 	  createConnectionPressed: function createConnectionPressed() {
-	    var _this = this;
 	
 	    var newConnection = {
 	      name: this.state.name,
@@ -27445,11 +27444,20 @@
 	    };
 	
 	    axios.post('https://demodaydashboard.herokuapp.com/api/employer', newConnection).then(function (response) {
-	      console.log(response.data.user);
-	      _this.clearForm();
-	      // alert("Account successfully created!");
-	      // browserHistory.push('/login');
+	      return response.data.user;
+	    }).then(function (employer) {
+	      var favorite = {
+	        employer: employer._id,
+	        student: "test",
+	        card: "No card"
+	      };
+	      return axios.post('https://demodaydashboard.herokuapp.com/api/favorite', favorite);
+	    }).then(function (favResponse) {
+	      console.log(favResponse);
 	    }).catch(console.log);
+	    // this.clearForm();
+	    // alert("Account successfully created!");
+	    // browserHistory.push('/login');
 	  },
 	  clearForm: function clearForm() {
 	    this.setState({ email: "", name: "", company: "" });
@@ -27457,7 +27465,7 @@
 	
 	
 	  render: function render() {
-	    var _this2 = this;
+	    var _this = this;
 	
 	    return _react2.default.createElement(
 	      "div",
@@ -27497,7 +27505,7 @@
 	        ),
 	        _react2.default.createElement("input", { type: "email", className: "form-control", onChange: this.emailInputChanged, id: "email", value: this.state.email, onKeyPress: function onKeyPress(t) {
 	            if (t.charCode === 13) {
-	              _this2.createConnectionPressed();
+	              _this.createConnectionPressed();
 	            }
 	          } })
 	      ),

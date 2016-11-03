@@ -29,12 +29,23 @@ const NewConnection = React.createClass({
 
     axios.post('https://demodaydashboard.herokuapp.com/api/employer', newConnection)
       .then(response =>  {
-        console.log(response.data.user);
-        this.clearForm();
-        // alert("Account successfully created!");
-        // browserHistory.push('/login');
+        return response.data.user;
+      })
+      .then((employer) => {
+        const favorite = {
+          employer: employer._id,
+          student: "test",
+          card: "No card"
+        };
+        return axios.post('https://demodaydashboard.herokuapp.com/api/favorite', favorite);
+      })
+      .then((favResponse) => {
+        console.log(favResponse);
       })
       .catch(console.log);
+        // this.clearForm();
+        // alert("Account successfully created!");
+        // browserHistory.push('/login');
   },
 
   clearForm() {

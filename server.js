@@ -179,6 +179,25 @@ app.post('/api/note', (req, res) => {
 });
 
 
+app.post('/api/favorite', (req, res) => {
+
+  console.log("USER", req.session.user);
+
+  const favorite = {
+    employer: req.body.employer,
+    student: req.session.user._id,
+    card: req.body.card,
+  };
+
+  axios.post('http://104.236.71.66:3000/api/favorites', favorite)
+    .then(response =>  {
+      res.sendStatus(201);
+    })
+    .catch(console.log);
+
+});
+
+
 app.post('/api/remove/note', (req, res) => {
 
   axios.post('http://104.236.71.66:3000/api/remove/note', {noteId: req.body.noteId})
